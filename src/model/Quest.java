@@ -2,11 +2,11 @@ package model;
 
 public class Quest {
     private String word;
-    private String clue;
+    private String hint;
     
     public Quest(String word, String clue) {
         this.word = word;
-        this.clue = clue;
+        this.hint = clue;
     }
 
     public String getWord() {
@@ -16,10 +16,10 @@ public class Quest {
         this.word = word;
     }
 
-    public String getClue() {
-        return clue;
+    public String getHint() {
+        return hint;
     }
     public void setClue(String clue) {
-        this.clue = clue;
+        this.hint = clue;
     }
 }

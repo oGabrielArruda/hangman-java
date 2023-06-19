@@ -11,10 +11,10 @@ public class QuestManager {
     public void save(Quest quest) {
         try {
             String word = quest.getWord(); 
-            String clue = quest.getClue();
+            String hint = quest.getHint();
 
             FileWriter fileWriter = new FileWriter(QUESTS_FILE_PATH, true);
-            fileWriter.write(word + ";" + clue + "\n");
+            fileWriter.write(word + ";" + hint + "\n");
             fileWriter.close();
             System.out.println("Quest saved successfully!");
         } catch (IOException e) {

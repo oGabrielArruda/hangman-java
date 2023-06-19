@@ -16,14 +16,14 @@ public class Main {
             System.out.println("word:");
             String word = myObj.nextLine();
 
-            System.out.println("clue:");
-            String clue = myObj.nextLine();
+            System.out.println("hint:");
+            String hint = myObj.nextLine();
 
-            Quest quest = new Quest(word, clue);
+            Quest quest = new Quest(word, hint);
             qm.save(quest);
 
             Quest random = QuestRandomizer.selectRandomQuest();
-            System.out.println("The random quest is: " + random.getWord() + "; " + random.getClue());
+            System.out.println("The random quest is: " + random.getWord() + "; " + random.getHint());
         }
     }
 }

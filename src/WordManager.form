@@ -18,7 +18,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value="Word Manager"/>
+          <text value="Quest Manager"/>
         </properties>
       </component>
       <component id="b8e30" class="javax.swing.JTextField" binding="txtHint">
