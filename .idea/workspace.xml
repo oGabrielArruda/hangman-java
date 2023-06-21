@@ -5,12 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="218e92fd-902e-4ad5-94bc-a90b851ddb38" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WordManager.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/QuestManager.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WordManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/QuestManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/GameFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/GamePanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GameMode/GameMode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GameMode/GameModeFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GameMode/GameModePanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Menu/MenuFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Menu/MenuPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/QuestManager/QuestManagerFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/QuestManager/QuestManagerPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hangman-java/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/hangman-java/main/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/manager/QuestManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/QuestManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Quest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Quest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +26,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -54,7 +61,7 @@
       <recent name="$PROJECT_DIR$/utils/assets/images" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.main.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="hangman-java" />
@@ -69,8 +76,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="main.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.Main" />
+      <module name="hangman-java" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.main.Main" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Menu" />
       </list>
@@ -85,7 +106,8 @@
       <option name="presentableId" value="Default" />
       <updated>1687119750985</updated>
       <workItem from="1687119752092" duration="4871000" />
-      <workItem from="1687178450504" duration="610000" />
+      <workItem from="1687178450504" duration="791000" />
+      <workItem from="1687351773657" duration="10753000" />
     </task>
     <servers />
   </component>

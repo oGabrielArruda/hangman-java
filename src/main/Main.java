@@ -1,14 +1,12 @@
 package main;
 
-import java.util.Scanner;
-
-import manager.QuestManager;
-import manager.QuestRandomizer;
-import model.Quest;
+import Menu.MenuFrame;
 
 public class Main {
 
     public static void main(String[] args) {
+        new MenuFrame();
+/*
         Scanner myObj = new Scanner(System.in);
 
         QuestManager qm = new QuestManager();
@@ -24,6 +22,6 @@ public class Main {
 
             Quest random = QuestRandomizer.selectRandomQuest();
             System.out.println("The random quest is: " + random.getWord() + "; " + random.getHint());
-        }
+        }*/
     }
 }
