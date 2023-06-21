@@ -5,6 +5,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+
 import Menu.MenuFrame;
 
 public class QuestManagerPanel extends JPanel {
@@ -60,7 +64,7 @@ public class QuestManagerPanel extends JPanel {
                 new MenuFrame();
             }
         });
-
+        
         this.add(lblQuestManager);
         this.add(lblWord);
         this.add(lblHint);
@@ -74,5 +78,42 @@ public class QuestManagerPanel extends JPanel {
         this.add(btnSaveFile);
         this.add(btnOpenFile);
         this.add(btnBackToMenu);
+
+        //adiciona palavras e dicas em quests.txt
+        btnAddQuest.addActionListener(new ActionListener() {
+            File file = new File("files//quests.txt");
+            public void actionPerformed(ActionEvent e) {
+                try{
+                    String word = txtWord.getText();
+                    String hint = txtHint.getText();
+                    BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
+                    
+                    //remove caracteres inválidos e espaços repetidos
+                    word = word.replaceAll("[^A-Za-z\\s]", "");
+                    word = word.trim();
+                    word = word.replaceAll("\\s+", " ");
+
+                    hint = hint.replaceAll("[^A-Za-z\\s]", "");
+                    hint = hint.trim();
+                    hint = hint.replaceAll("\\s+", " ");
+
+                    //talvez seja bom colocar uma frase na tela ao invés de escrever no terminal
+                    if(word.equals("")){
+                        System.out.println("Escreva uma palavra.");
+                    }
+                    else if(hint.equals("")){
+                        System.out.println("Escreva uma dica.");
+                    }
+                    else{
+                        writer.write(word + ";" + hint + "\n");
+                        writer.close();
+                    }
+                }
+                catch(Exception f) {
+                    System.out.println("Algum erro inesperado ocorreu na Adição de Palavra.");
+                }
+            }
+        });
+
     }
 }
