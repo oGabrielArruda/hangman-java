@@ -9,7 +9,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 import Menu.MenuFrame;
@@ -107,30 +106,76 @@ public class QuestManagerPanel extends JPanel {
                     else if(hint.equals("")){
                         System.out.println("Escreva uma dica.");
                     }
-                    else if(encontrasString(word)){
+                    else if(encontraString(word) != -1){
                         System.out.println("Palavra já adicionada.");
                     }
                     else{
                         writer.write(word + ";" + hint + "\n");
-                        writer.close();
+                        System.out.println("Palavra adicionada.");
                     }
+                    writer.close();
                 }
                 catch(Exception f) {
                     System.out.println("Algum erro inesperado ocorreu na Adição de Palavra.");
                 }
             }
         });
+        
+        //remove palavra de quests.txt
+        btnRemoveQuest.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                File file = new File("files//quests.txt");
+                try{
+                    Scanner scan = new Scanner(file);
+                    String word = txtWord.getText();
+                
+                    //remove caracteres inválidos e espaços repetidos
+                    word = word.replaceAll("[^A-Za-z\\s]", "");
+                    word = word.trim();
+                    word = word.replaceAll("\\s+", " ");
+
+                    //talvez seja bom colocar uma frase na tela ao invés de escrever no terminal
+                    int tam = encontraString(word);
+                    
+                    if(word.equals("")){
+                        System.out.println("Escreva uma palavra.");
+                    }
+                    else if(tam == -1){
+                        System.out.println("Palavra não encontrada.");
+                    }
+                    else{
+                        String s = "";
+                        for(int i=0; i<tam; i++){
+                            s += scan.nextLine() + "\n";
+                        }
+                        scan.nextLine();
+                        while(scan.hasNextLine()){
+                            s += scan.nextLine() + "\n";
+                        }
+                        BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+                        writer.write(s);
+                        writer.close();
+                        System.out.println("Palavra removida.");
+                    }
+                    scan.close();
+                }
+                catch(Exception f) {
+                    System.out.println("Algum erro inesperado ocorreu na Remoção de Palavra.");
+                }
+            }
+        });
     }
 
-    //retorna true se a palavra existe na lista e false caso contrário
-    public boolean encontrasString(String s){
+    //retorna a linha que tem a palavra se ela existe e -1 caso contrário
+    public int encontraString(String s){
         File file = new File("files//quests.txt");
         try{
+            int linha = -1;
             boolean ok = false;
             Scanner scan = new Scanner(file);
             
             while(scan.hasNextLine()){
-                String txt = scan.nextLine();
+                String txt = scan.nextLine(); linha ++;
                 int i = 0;
                 String w = "";
                 while(txt.charAt(i) != ';'){
@@ -143,12 +188,13 @@ public class QuestManagerPanel extends JPanel {
                 }
             }
             scan.close();
-            return ok;
+            if (ok) return linha;
+            else return -1;
         }
         //se ocorreu algum erro
         catch (IOException e){
             System.out.println("Algum erro inesperado ocorreu na leitura do Arquivo.");
-            return false;
+            return -1;
         }
     }
 }
