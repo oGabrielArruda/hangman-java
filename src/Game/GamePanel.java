@@ -91,21 +91,21 @@ public class GamePanel extends JPanel {
                     String letter = newLetterButton.getText();
                     boolean matches = pnlWord.matchLetter(letter);
 
-                    if(!matches) {
+                    if (!matches) {
                         hangmanState = HangmanState.nextBodyPart(hangmanState);
                         lblUsedLetters.setText(lblUsedLetters.getText() + " " + letter);
                     }
 
                     int option = 3;
-                    if(hasWon()) {
-                        option = JOptionPane.showConfirmDialog(null, "Congrats! You have won! Would you like to play again?");
-                    } else if(hasLost()) {
-                        option = JOptionPane.showConfirmDialog(null, "Looks like you have lost! Would you like to play again?");
+                    if (hasWon()) {
+                        option = JOptionPane.showConfirmDialog(null, "Congrats! You have won! Would you like to play again?", "Nice!", JOptionPane.YES_NO_OPTION);
+                    } else if (hasLost()) {
+                        option = JOptionPane.showConfirmDialog(null, "Looks like you have lost! Would you like to play again?", "Too bad :/", JOptionPane.YES_NO_OPTION);
                     }
 
-                    if(option == 0) {
+                    if (option == 0) {
                         new GameFrame(DIFFICULTY);
-                    } else if(option == 1 || option == 2) {
+                    } else if (option == 1 || option == 2) {
                         new GameModeFrame();
                     }
 
