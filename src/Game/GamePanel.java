@@ -11,6 +11,8 @@ import java.util.Random;
 import java.util.Scanner;
 
 import GameMode.*;
+import manager.QuestRandomizer;
+import model.Quest;
 
 public class GamePanel extends JPanel {
     private WordPanel pnlWord;
@@ -33,15 +35,12 @@ public class GamePanel extends JPanel {
         this.setLayout(null);
         this.setBackground(new Color(255, 208, 208));
 
-        this.loadWordsAndHints();
 
-        int chosenIndex = this.getRandomIndex(0, wordList.size());
-        String wordContent = this.wordList.get(chosenIndex);
-        String hintContent = this.hintList.get(chosenIndex);
+        Quest quest = QuestRandomizer.selectRandomQuest();
 
-        pnlWord = new WordPanel(wordContent);
+        pnlWord = new WordPanel(quest.getWord());
         JLabel lblUsedLetters = new JLabel("Used letters: ");
-        JLabel lblHintContent = new JLabel(hintContent);
+        JLabel lblHintContent = new JLabel(quest.getHint());
         JButton btnBackToGameMode = new JButton("Back to Game Mode Selection");
 
         lblHintContent.setBounds(0, 20, 900, 50);
@@ -125,39 +124,4 @@ public class GamePanel extends JPanel {
             i++;
         }
     }
-
-    private void loadWordsAndHints() {
-        wordList = new ArrayList<>();
-        hintList = new ArrayList<>();
-        try {
-            File file = new File("files//quests.txt");
-            Scanner scan = new Scanner(file);
-            while (scan.hasNextLine()) {
-                String data = scan.nextLine();
-                String word = "", hint = "";
-                boolean foundSeparator = false;
-                for (int i = 0; i < data.length(); ++i) {
-                    if (data.charAt(i) == ';') {
-                        foundSeparator = true;
-                    } else if (!foundSeparator) {
-                        word += data.charAt(i);
-                    } else {
-                        hint += data.charAt(i);
-                    }
-                }
-                wordList.add(word);
-                hintList.add(hint);
-            }
-            scan.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("Ocorreu um erro ao ler o arquivo de dicas.");
-        }
-    }
-
-    private int getRandomIndex(int min, int max) {
-        /* Retorna um inteiro pseudoaleatório no intervalo [min, max) */
-        Random random = new Random();
-        return random.nextInt(max - min) + min;
-    }
-
 }
