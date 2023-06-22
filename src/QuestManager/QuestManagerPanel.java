@@ -8,6 +8,9 @@ import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 import Menu.MenuFrame;
 
@@ -104,6 +107,9 @@ public class QuestManagerPanel extends JPanel {
                     else if(hint.equals("")){
                         System.out.println("Escreva uma dica.");
                     }
+                    else if(encontrasString(word)){
+                        System.out.println("Palavra já adicionada.");
+                    }
                     else{
                         writer.write(word + ";" + hint + "\n");
                         writer.close();
@@ -114,6 +120,35 @@ public class QuestManagerPanel extends JPanel {
                 }
             }
         });
+    }
 
+    //retorna true se a palavra existe na lista e false caso contrário
+    public boolean encontrasString(String s){
+        File file = new File("files//quests.txt");
+        try{
+            boolean ok = false;
+            Scanner scan = new Scanner(file);
+            
+            while(scan.hasNextLine()){
+                String txt = scan.nextLine();
+                int i = 0;
+                String w = "";
+                while(txt.charAt(i) != ';'){
+                    w += txt.charAt(i);
+                    i++;
+                }
+                if(w.equals(s)){
+                    ok = true;
+                    break;
+                }
+            }
+            scan.close();
+            return ok;
+        }
+        //se ocorreu algum erro
+        catch (IOException e){
+            System.out.println("Algum erro inesperado ocorreu na leitura do Arquivo.");
+            return false;
+        }
     }
 }
