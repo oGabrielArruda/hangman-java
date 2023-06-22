@@ -86,8 +86,8 @@ public class QuestManagerPanel extends JPanel {
             File file = new File("files//quests.txt");
             public void actionPerformed(ActionEvent e) {
                 try{
-                    String word = txtWord.getText();
-                    String hint = txtHint.getText();
+                    String word = txtWord.getText().toLowerCase();
+                    String hint = txtHint.getText().toLowerCase();
                     BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
                     
                     //remove caracteres inválidos e espaços repetidos
@@ -127,7 +127,7 @@ public class QuestManagerPanel extends JPanel {
                 File file = new File("files//quests.txt");
                 try{
                     Scanner scan = new Scanner(file);
-                    String word = txtWord.getText();
+                    String word = txtWord.getText().toLowerCase();
                 
                     //remove caracteres inválidos e espaços repetidos
                     word = word.replaceAll("[^A-Za-z\\s]", "");
