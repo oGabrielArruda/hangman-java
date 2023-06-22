@@ -13,7 +13,7 @@ public class MenuPanel extends JPanel {
     private static int MID_SCREEN_Y = 450;
     private static final Color COLOR_BUTTONS = new Color(255, 158, 170);
 
-    public MenuPanel() {
+    public MenuPanel(MenuFrame menuFrame) {
         this.setLayout(null);
         this.setBackground(new Color(255, 208, 208));
         JLabel lblWelcome = new JLabel("Welcome to Hangman!");
@@ -31,12 +31,14 @@ public class MenuPanel extends JPanel {
         btnPlay.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 new GameModeFrame();
+                menuFrame.dispose();
             }
         });
 
         btnQuestManager.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 new QuestManagerFrame();
+                menuFrame.dispose();
             }
         });
 

@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class GameModeFrame extends JFrame {
     public GameModeFrame() {
-        this.add(new GameModePanel());
+        this.add(new GameModePanel(this));
         this.setTitle("Hangman Game");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setSize(900, 900);

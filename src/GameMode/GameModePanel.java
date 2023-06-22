@@ -16,7 +16,7 @@ public class GameModePanel extends JPanel {
     private static final int VERTICAL_GAP_BUTTONS = 50;
     private static final Color COLOR_BUTTONS = new Color(255, 158, 170);
 
-    public GameModePanel() {
+    public GameModePanel(GameModeFrame gameModeFrame) {
         this.setLayout(null);
         this.setBackground(new Color(255, 208, 208));
 
@@ -44,24 +44,28 @@ public class GameModePanel extends JPanel {
         btnEasy.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 new GameFrame(GameMode.EASY);
+                gameModeFrame.dispose();
             }
         });
 
         btnMedium.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 new GameFrame(GameMode.MEDIUM);
+                gameModeFrame.dispose();
             }
         });
 
         btnHard.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 new GameFrame(GameMode.HARD);
+                gameModeFrame.dispose();
             }
         });
 
         btnBackToMenu.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 new MenuFrame();
+                gameModeFrame.dispose();
             }
         });
 

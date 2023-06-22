@@ -21,13 +21,12 @@ public class GamePanel extends JPanel {
     private static final int VERTICAL_GAP_BUTTONS = 30;
     private static final Color COLOR_BUTTONS = new Color(255, 158, 170);
 
-    public GamePanel(GameMode difficulty) {
+    public GamePanel(GameMode difficulty, GameFrame gameFrame) {
         this.hangmanState = HangmanState.HEAD;
         this.DIFFICULTY = difficulty;
 
         this.setLayout(null);
         this.setBackground(new Color(255, 208, 208));
-
 
         Quest quest = QuestRandomizer.selectRandomQuest();
 
@@ -49,6 +48,7 @@ public class GamePanel extends JPanel {
         btnBackToGameMode.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 new GameModeFrame();
+                gameFrame.dispose();
             }
         });
 
