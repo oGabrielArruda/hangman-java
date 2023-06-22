@@ -13,6 +13,8 @@ public class GamePanel extends JPanel {
     private WordPanel pnlWord;
     private final GameMode DIFFICULTY;
     private HangmanState hangmanState;
+    private GameFrame gameFrame;
+    private int currentTime;
     private static final int MID_SCREEN_X = 450;
     private static final int MID_SCREEN_Y = 450;
     private static final int WIDTH_BUTTONS = 150;
@@ -24,6 +26,7 @@ public class GamePanel extends JPanel {
     public GamePanel(GameMode difficulty, GameFrame gameFrame) {
         this.hangmanState = HangmanState.HEAD;
         this.DIFFICULTY = difficulty;
+        this.gameFrame = gameFrame;
 
         this.setLayout(null);
         this.setBackground(new Color(255, 208, 208));
@@ -34,7 +37,21 @@ public class GamePanel extends JPanel {
         JLabel lblUsedLetters = new JLabel("Used letters: ");
         JLabel lblHintContent = new JLabel(quest.getHint());
         JButton btnBackToGameMode = new JButton("Back to Game Mode Selection");
+        
+        JLabel lblTimer = new JLabel();
 
+        currentTime = difficulty.getTime();
+        Timer timer = new Timer(1000, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                lblTimer.setText(Integer.toString(currentTime--));
+                checkIfFinished();
+            }
+        });
+        timer.start();
+
+        lblTimer.setBounds(0, 90, 900, 50);
+        lblTimer.setHorizontalAlignment(SwingConstants.CENTER);
         lblHintContent.setBounds(0, 20, 900, 50);
         lblHintContent.setHorizontalAlignment(SwingConstants.CENTER);
         lblUsedLetters.setBounds(0, 50, 900, 50);
@@ -54,6 +71,7 @@ public class GamePanel extends JPanel {
 
         loadLetterButtons(lblUsedLetters, pnlWord);
 
+        this.add(lblTimer);
         this.add(lblHintContent);
         this.add(lblUsedLetters);
         this.add(pnlWord);
@@ -62,11 +80,27 @@ public class GamePanel extends JPanel {
     }
 
     private boolean hasLost() {
-        return hangmanState == HangmanState.HANGED;
+        return hangmanState == HangmanState.HANGED || currentTime == 0;
     }
 
     private boolean hasWon() {
-        return pnlWord.hasGuessedAllLetters() && hangmanState != HangmanState.HANGED;
+        return pnlWord.hasGuessedAllLetters() && hangmanState != HangmanState.HANGED && currentTime != 0;
+    }
+
+    private void checkIfFinished() {
+        int option = 3;
+        if (hasWon()) {
+            option = JOptionPane.showConfirmDialog(null, "Congrats! You have won! Would you like to play again?", "Nice!", JOptionPane.YES_NO_OPTION);
+        } else if (hasLost()) {
+            option = JOptionPane.showConfirmDialog(null, "Looks like you have lost! Would you like to play again?", "Too bad :/", JOptionPane.YES_NO_OPTION);
+        }
+        if (option == 3) return;
+        if (option == 0) {
+            new GameFrame(DIFFICULTY);
+        } else {
+            new GameModeFrame();
+        }
+        this.gameFrame.dispose();
     }
 
     private void loadLetterButtons(JLabel lblUsedLetters, WordPanel pnlWord) {
@@ -96,18 +130,7 @@ public class GamePanel extends JPanel {
                         lblUsedLetters.setText(lblUsedLetters.getText() + " " + letter);
                     }
 
-                    int option = 3;
-                    if (hasWon()) {
-                        option = JOptionPane.showConfirmDialog(null, "Congrats! You have won! Would you like to play again?", "Nice!", JOptionPane.YES_NO_OPTION);
-                    } else if (hasLost()) {
-                        option = JOptionPane.showConfirmDialog(null, "Looks like you have lost! Would you like to play again?", "Too bad :/", JOptionPane.YES_NO_OPTION);
-                    }
-
-                    if (option == 0) {
-                        new GameFrame(DIFFICULTY);
-                    } else if (option == 1 || option == 2) {
-                        new GameModeFrame();
-                    }
+                    checkIfFinished();
 
                     newLetterButton.setVisible(false);
                 }
