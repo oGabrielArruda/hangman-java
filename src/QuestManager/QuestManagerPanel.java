@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import Menu.MenuFrame;
+import Popup.PopupFrame;
 
 public class QuestManagerPanel extends JPanel {
 
@@ -93,22 +94,27 @@ public class QuestManagerPanel extends JPanel {
 
                     //talvez seja bom colocar uma frase na tela ao invés de escrever no terminal
                     if(word.equals("")){
-                        System.out.println("Escreva uma palavra.");
+                        new PopupFrame("Erro", "Escreva uma palavra.");
+                        // System.out.println("Escreva uma palavra.");
                     }
                     else if(hint.equals("")){
-                        System.out.println("Escreva uma dica.");
+                        new PopupFrame("Erro", "Escreva uma dica.");
+                        // System.out.println("Escreva uma dica.");
                     }
                     else if(encontraString(word) != -1){
-                        System.out.println("Palavra já adicionada.");
+                        new PopupFrame("Erro", "Palavra já adicionada.");
+                        // System.out.println("Palavra já adicionada.");
                     }
                     else{
                         writer.write(word + ";" + hint + "\n");
-                        System.out.println("Palavra adicionada.");
+                        new PopupFrame("", "Palavra adicionada.");
+                        // System.out.println("Palavra adicionada.");
                     }
                     writer.close();
                 }
                 catch(Exception f) {
-                    System.out.println("Algum erro inesperado ocorreu na Adição de Palavra.");
+                    new PopupFrame("Erro", "Algum erro inesperado ocorreu na Adição de Palavra.");
+                    // System.out.println("Algum erro inesperado ocorreu na Adição de Palavra.");
                 }
             }
         });
