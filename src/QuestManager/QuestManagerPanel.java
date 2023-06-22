@@ -22,7 +22,7 @@ public class QuestManagerPanel extends JPanel {
     private static final int HEIGHT_BUTTONS = 50;
     private static final Color COLOR_BUTTONS = new Color(255, 158, 170);
 
-    public QuestManagerPanel() {
+    public QuestManagerPanel(QuestManagerFrame questManagerFrame) {
         this.setLayout(null);
         this.setBackground(new Color(255, 208, 208));
 
@@ -64,6 +64,7 @@ public class QuestManagerPanel extends JPanel {
         btnBackToMenu.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 new MenuFrame();
+                questManagerFrame.dispose();
             }
         });
         
