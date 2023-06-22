@@ -4,11 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.Scanner;
 
 import GameMode.*;
 import manager.QuestRandomizer;
@@ -18,8 +13,6 @@ public class GamePanel extends JPanel {
     private WordPanel pnlWord;
     private final GameMode DIFFICULTY;
     private HangmanState hangmanState;
-    private ArrayList<String> wordList;
-    private ArrayList<String> hintList;
     private static final int MID_SCREEN_X = 450;
     private static final int MID_SCREEN_Y = 450;
     private static final int WIDTH_BUTTONS = 150;
