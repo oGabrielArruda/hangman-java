@@ -5,15 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="218e92fd-902e-4ad5-94bc-a90b851ddb38" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Game/HangmanState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/WordPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/quests.txt" beforeDir="false" afterPath="$PROJECT_DIR$/files/quests.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/hangman-java/Game/GamePanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/hangman-java/Game/GamePanel$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/hangman-java/Game/GamePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/hangman-java/Game/GamePanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/hangman-java/QuestManager/QuestManagerPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/hangman-java/QuestManager/QuestManagerPanel$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/hangman-java/QuestManager/QuestManagerPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/hangman-java/QuestManager/QuestManagerPanel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/GamePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/assets/images/Enforcado.gif" beforeDir="false" afterPath="$PROJECT_DIR$/utils/assets/images/Enforcado.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/assets/images/Forca_05.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/assets/images/Forca_07.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/assets/images/Forca_08.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/assets/images/Forca_09.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/assets/images/Forca_10.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/assets/images/Forca_14.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/assets/images/Forca_16.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/assets/images/Forca_17.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/assets/images/Forca_1_05.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/assets/images/Forca_2_03.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/assets/images/Forca_2_04.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/assets/images/Forca_2_07.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/assets/images/Forca__01.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/assets/images/Forca__02.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/assets/images/Forca__03.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/assets/images/Forca__05.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/assets/images/Forca__08.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/assets/images/Forca__09.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/assets/images/Forca__13.gif" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +120,8 @@
       <workItem from="1687351773657" duration="11117000" />
       <workItem from="1687438988839" duration="4974000" />
       <workItem from="1687445642991" duration="80000" />
-      <workItem from="1687445863635" duration="3833000" />
+      <workItem from="1687445863635" duration="3992000" />
+      <workItem from="1687544961050" duration="2041000" />
     </task>
     <servers />
   </component>

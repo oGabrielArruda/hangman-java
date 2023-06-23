@@ -79,12 +79,28 @@ public class GamePanel extends JPanel {
         this.add(btnBackToGameMode);
     }
 
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        ImageIcon imageIcon = new ImageIcon("utils/assets/images/Enforcado_resized.gif");
+        Image image = imageIcon.getImage();
+        g.drawImage(image, MID_SCREEN_X, MID_SCREEN_Y, null);
+        drawHangman(g);
+    }
+
     private boolean hasLost() {
         return hangmanState == HangmanState.HANGED || currentTime == 0;
     }
 
     private boolean hasWon() {
         return pnlWord.hasGuessedAllLetters() && hangmanState != HangmanState.HANGED && currentTime != 0;
+    }
+
+    private void drawHangman(Graphics g) {
+        ImageIcon imageIcon;
+        imageIcon = new ImageIcon("utils/assets/images/Enforcado_resized.gif");
+        Image image = imageIcon.getImage();
+        g.drawImage(image, MID_SCREEN_X, MID_SCREEN_Y, null);
     }
 
     private void checkIfFinished() {
