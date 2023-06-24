@@ -16,11 +16,12 @@ public class MenuPanel extends JPanel {
     public MenuPanel(MenuFrame menuFrame) {
         this.setLayout(null);
         this.setBackground(new Color(255, 208, 208));
-        JLabel lblWelcome = new JLabel("Welcome to Hangman!");
+        JLabel lblWelcome = new JLabel("Welcome to Hangman!", SwingConstants.CENTER);
+        lblWelcome.setFont(new Font("Comic Sans MS", Font.PLAIN, 40));
         JButton btnPlay = new JButton("Play");
         JButton btnQuestManager = new JButton("Quest Manager");
 
-        lblWelcome.setBounds(MID_SCREEN_X - 80, 60, 300, 100);
+        lblWelcome.setBounds(MID_SCREEN_X - 450, 60, 900, 100);
 
         btnPlay.setBounds(MID_SCREEN_X - 100, MID_SCREEN_Y - 25, 200, 50);
         btnPlay.setBackground(COLOR_BUTTONS);
