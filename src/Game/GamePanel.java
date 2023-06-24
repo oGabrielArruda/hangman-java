@@ -15,6 +15,7 @@ public class GamePanel extends JPanel {
     private HangmanState hangmanState;
     private GameFrame gameFrame;
     private int currentTime;
+    private Timer timer;
     private static final int MID_SCREEN_X = 450;
     private static final int MID_SCREEN_Y = 450;
     private static final int WIDTH_BUTTONS = 150;
@@ -41,11 +42,11 @@ public class GamePanel extends JPanel {
         JLabel lblTimer = new JLabel();
 
         currentTime = difficulty.getTime();
-        Timer timer = new Timer(1000, new ActionListener(){
+        this.timer = new Timer(1000, new ActionListener(){
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e) {    
                 lblTimer.setText(Integer.toString(currentTime--));
-                checkIfFinished();
+                checkIfFinishedTime();
             }
         });
         timer.start();
@@ -89,11 +90,15 @@ public class GamePanel extends JPanel {
     }
 
     private boolean hasLost() {
-        return hangmanState == HangmanState.HANGED || currentTime == 0;
+        return hangmanState == HangmanState.HANGED;
+    }
+
+    private boolean hasLostTime() {
+        return currentTime == -1;
     }
 
     private boolean hasWon() {
-        return pnlWord.hasGuessedAllLetters() && hangmanState != HangmanState.HANGED && currentTime != 0;
+        return pnlWord.hasGuessedAllLetters() && hangmanState != HangmanState.HANGED && currentTime > 0;
     }
 
     private void drawHangman(Graphics g) {
@@ -106,10 +111,28 @@ public class GamePanel extends JPanel {
     private void checkIfFinished() {
         int option = 3;
         if (hasWon()) {
+            timer.stop();
             option = JOptionPane.showConfirmDialog(null, "Congrats! You have won! Would you like to play again?", "Nice!", JOptionPane.YES_NO_OPTION);
-        } else if (hasLost()) {
+        }else if (hasLost()) {
+            timer.stop();
             option = JOptionPane.showConfirmDialog(null, "Looks like you have lost! Would you like to play again?", "Too bad :/", JOptionPane.YES_NO_OPTION);
         }
+        restart(option);
+    }
+
+    private void checkIfFinishedTime() {
+        int option = 3;
+        if (hasLost() || hasWon()){
+            timer.stop();
+            return;
+        }
+        if (hasLostTime()) {
+            option = JOptionPane.showConfirmDialog(null, "Looks like your time is up! Would you like to play again?", "Too bad :/", JOptionPane.YES_NO_OPTION);
+        }
+        restart(option);
+    }
+
+    private void restart(int option) {
         if (option == 3) return;
         if (option == 0) {
             new GameFrame(DIFFICULTY);

@@ -35,8 +35,8 @@ public class QuestManagerPanel extends JPanel {
         JTextField txtWord = new JTextField();
         JTextField txtHint = new JTextField();
         
-        JButton btnAddQuest = new JButton("Adicionar");
-        JButton btnRemoveQuest = new JButton("Remover");
+        JButton btnAddQuest = new JButton("Addr");
+        JButton btnRemoveQuest = new JButton("Remove");
         JButton btnBackToMenu = new JButton("Back to Menu");
         
         lblQuestManager.setBounds(MID_SCREEN_X - 55, 60, 110, 100);
