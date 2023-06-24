@@ -19,7 +19,7 @@ public class QuestManagerPanel extends JPanel {
     private static final int MID_SCREEN_X = 450;
     private static final int MID_SCREEN_Y = 450;
     private static final int GAP_BUTTONS = 100;
-    private static final  int WIDTH_BUTTONS = 100;
+    private static final int WIDTH_BUTTONS = 200;
     private static final int HEIGHT_BUTTONS = 50;
     private static final Color COLOR_BUTTONS = new Color(255, 158, 170);
 
@@ -28,31 +28,41 @@ public class QuestManagerPanel extends JPanel {
         
         this.setBackground(new Color(255, 208, 208));
         
-        JLabel lblQuestManager = new JLabel("Quest Manager");
+        JLabel lblQuestManager = new JLabel("Quest Manager", SwingConstants.CENTER);
+        lblQuestManager.setFont(new Font("Comic Sans MS", Font.PLAIN, 40));
+
         JLabel lblWord = new JLabel("Word");
+        lblWord.setFont(new Font("Comic Sans MS", Font.PLAIN, 30));
+
         JLabel lblHint = new JLabel("Hint");
+        lblHint.setFont(new Font("Comic Sans MS", Font.PLAIN, 30));
         
         JTextField txtWord = new JTextField();
         JTextField txtHint = new JTextField();
         
-        JButton btnAddQuest = new JButton("Addr");
-        JButton btnRemoveQuest = new JButton("Remove");
-        JButton btnBackToMenu = new JButton("Back to Menu");
+        JButton btnAddQuest = new JButton("Add");
+        btnAddQuest.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
         
-        lblQuestManager.setBounds(MID_SCREEN_X - 55, 60, 110, 100);
+        JButton btnRemoveQuest = new JButton("Remove");
+        btnRemoveQuest.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
+        
+        JButton btnBackToMenu = new JButton("Back to Menu");
+        btnBackToMenu.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
+        
+        lblQuestManager.setBounds(MID_SCREEN_X - 450, 60, 900, 100);
         lblWord.setBounds(20, 200, 100, 50);
         lblHint.setBounds(20, 350, 100, 50);
         
         txtWord.setBounds(20, 280, 300, 30);
         txtHint.setBounds(20, 430, 300, 30);
 
-        btnRemoveQuest.setBounds(MID_SCREEN_X + GAP_BUTTONS/2 - WIDTH_BUTTONS - 2*GAP_BUTTONS, 600, WIDTH_BUTTONS, HEIGHT_BUTTONS);
+        btnRemoveQuest.setBounds(MID_SCREEN_X - WIDTH_BUTTONS/2 - 2*GAP_BUTTONS, 600 - 30, WIDTH_BUTTONS, HEIGHT_BUTTONS);
         btnRemoveQuest.setBackground(COLOR_BUTTONS);
 
-        btnAddQuest.setBounds(MID_SCREEN_X + GAP_BUTTONS/2 - WIDTH_BUTTONS + 2*GAP_BUTTONS, 600, WIDTH_BUTTONS, HEIGHT_BUTTONS);
+        btnAddQuest.setBounds(MID_SCREEN_X - WIDTH_BUTTONS/2 + 2*GAP_BUTTONS, 600 - 30, WIDTH_BUTTONS, HEIGHT_BUTTONS);
         btnAddQuest.setBackground(COLOR_BUTTONS);
 
-        btnBackToMenu.setBounds(MID_SCREEN_X - WIDTH_BUTTONS, MID_SCREEN_Y + 300 - HEIGHT_BUTTONS, 2*WIDTH_BUTTONS, HEIGHT_BUTTONS);
+        btnBackToMenu.setBounds(MID_SCREEN_X - WIDTH_BUTTONS, MID_SCREEN_Y + 300 - HEIGHT_BUTTONS - 30, 2*WIDTH_BUTTONS, HEIGHT_BUTTONS);
         btnBackToMenu.setBackground(new Color(193, 236, 228));
 
         btnBackToMenu.addActionListener(new ActionListener() {

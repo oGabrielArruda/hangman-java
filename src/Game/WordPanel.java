@@ -17,8 +17,8 @@ public class WordPanel extends JPanel {
         this.setBackground(new Color(255, 208, 208));
 
         for(int i = 0; i < this.WORD.length(); i++) {
-            JLabel lblLetter = new JLabel("_");
-            lblLetter.setSize(9, 9);
+            JLabel lblLetter = new JLabel("_", SwingConstants.CENTER);
+            lblLetter.setFont(new Font("Comic Sans MS", Font.PLAIN, 30));
 
             labels.add(lblLetter);
             this.add(lblLetter);

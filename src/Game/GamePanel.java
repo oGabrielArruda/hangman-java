@@ -36,7 +36,7 @@ public class GamePanel extends JPanel {
 
         pnlWord = new WordPanel(quest.getWord());
         JLabel lblUsedLetters = new JLabel("Used letters: ");
-        JLabel lblHintContent = new JLabel(quest.getHint());
+        JLabel lblHintContent = new JLabel(quest.getHint().toUpperCase());
         JButton btnBackToGameMode = new JButton("Back to Game Mode Selection");
         
         JLabel lblTimer = new JLabel();
@@ -51,12 +51,17 @@ public class GamePanel extends JPanel {
         });
         timer.start();
 
-        lblTimer.setBounds(0, 90, 900, 50);
-        lblTimer.setHorizontalAlignment(SwingConstants.CENTER);
-        lblHintContent.setBounds(0, 20, 900, 50);
+        lblHintContent.setBounds(0, 30, 900, 50);
         lblHintContent.setHorizontalAlignment(SwingConstants.CENTER);
-        lblUsedLetters.setBounds(0, 50, 900, 50);
+        lblHintContent.setFont(new Font("Comic Sans MS", Font.PLAIN, 40));
+
+        lblUsedLetters.setBounds(0, 90, 900, 50);
         lblUsedLetters.setHorizontalAlignment(SwingConstants.CENTER);
+        lblUsedLetters.setFont(new Font("Comic Sans MS", Font.PLAIN, 40));
+
+        lblTimer.setBounds(0, 150, 900, 50);
+        lblTimer.setHorizontalAlignment(SwingConstants.CENTER);
+        lblTimer.setFont(new Font("Comic Sans MS", Font.PLAIN, 40));
 
         pnlWord.setBounds(0, MID_SCREEN_Y + 50, 900, 50);
 
