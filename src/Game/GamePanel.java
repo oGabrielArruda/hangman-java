@@ -98,7 +98,7 @@ public class GamePanel extends JPanel {
     }
 
     private boolean hasWon() {
-        return pnlWord.hasGuessedAllLetters() && hangmanState != HangmanState.HANGED && currentTime > 0;
+        return pnlWord.hasGuessedAllLetters() && hangmanState != HangmanState.HANGED && currentTime >= 0;
     }
 
     private void drawHangman(Graphics g) {
@@ -124,9 +124,8 @@ public class GamePanel extends JPanel {
         int option = 3;
         if (hasLost() || hasWon()){
             timer.stop();
-            return;
         }
-        if (hasLostTime()) {
+        else if (hasLostTime()) {
             option = JOptionPane.showConfirmDialog(null, "Looks like your time is up! Would you like to play again?", "Too bad :/", JOptionPane.YES_NO_OPTION);
         }
         restart(option);
