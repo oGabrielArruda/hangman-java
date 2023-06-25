@@ -1,18 +1,16 @@
 package Popup;
 
+import Constants.Constants;
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class PopupPanel extends JPanel {
     public PopupPanel(PopupFrame popupFrame, String title, String content) {
         this.setLayout(null);
-        this.setBackground(new Color(255, 208, 208));
+        this.setBackground(Constants.COLOR_BACKGROUND);
         JLabel lblContent = new JLabel(content);
-        lblContent.setBounds(0, 150, 450, 50);
+        lblContent.setBounds(0, Constants.MID_SCREEN_Y/3, Constants.MID_SCREEN_X, Constants.HEIGHT_BUTTONS);
         lblContent.setHorizontalAlignment(SwingConstants.CENTER);
-        lblContent.setFont(new Font("Comic Sans MS", Font.PLAIN, 30));
+        lblContent.setFont(Constants.FONT(30));
         this.add(lblContent);
     }
 }

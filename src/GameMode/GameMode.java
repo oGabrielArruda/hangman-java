@@ -8,7 +8,6 @@ public enum GameMode {
 
     private int difficulty;
     private int time;
-
     
     GameMode(int difficulty) {
         this.difficulty = difficulty;

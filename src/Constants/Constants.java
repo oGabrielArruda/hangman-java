@@ -4,8 +4,8 @@ import java.awt.*;
 public class Constants {
     public static final int SCREEN_X = 900;
     public static final int SCREEN_Y = 900;
-    public static final int MID_SCREEN_X = 450;
-    public static final int MID_SCREEN_Y = 450;
+    public static final int MID_SCREEN_X = SCREEN_X/2;
+    public static final int MID_SCREEN_Y = SCREEN_Y/2;
     public static final int WIDTH_BUTTONS = 150;
     public static final int HEIGHT_BUTTONS = 50;
     public static final int HORIZONTAL_GAP_BUTTONS = 30;
