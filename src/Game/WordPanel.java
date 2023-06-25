@@ -1,5 +1,7 @@
 package Game;
 
+import Constants.Constants;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -14,11 +16,11 @@ public class WordPanel extends JPanel {
         labels = new ArrayList<JLabel>();
 
         this.setLayout(new FlowLayout());
-        this.setBackground(new Color(255, 208, 208));
+        this.setBackground(Constants.COLOR_BACKGROUND);
 
         for(int i = 0; i < this.WORD.length(); i++) {
             JLabel lblLetter = new JLabel("_", SwingConstants.CENTER);
-            lblLetter.setFont(new Font("Comic Sans MS", Font.PLAIN, 30));
+            lblLetter.setFont(Constants.FONT(30));
 
             labels.add(lblLetter);
             this.add(lblLetter);

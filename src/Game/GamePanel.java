@@ -1,6 +1,9 @@
 package Game;
 
 import javax.swing.*;
+
+import Constants.Constants;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,18 +14,11 @@ import model.Quest;
 
 public class GamePanel extends JPanel {
     private WordPanel pnlWord;
-    private final GameMode DIFFICULTY;
     private HangmanState hangmanState;
     private GameFrame gameFrame;
-    private int currentTime;
     private Timer timer;
-    private static final int MID_SCREEN_X = 450;
-    private static final int MID_SCREEN_Y = 450;
-    private static final int WIDTH_BUTTONS = 150;
-    private static final int HEIGHT_BUTTONS = 50;
-    private static final int HORIZONTAL_GAP_BUTTONS = 30;
-    private static final int VERTICAL_GAP_BUTTONS = 30;
-    private static final Color COLOR_BUTTONS = new Color(255, 158, 170);
+    private int currentTime;
+    private final GameMode DIFFICULTY;
 
     public GamePanel(GameMode difficulty, GameFrame gameFrame) {
         this.hangmanState = HangmanState.HEAD;
@@ -30,7 +26,7 @@ public class GamePanel extends JPanel {
         this.gameFrame = gameFrame;
 
         this.setLayout(null);
-        this.setBackground(new Color(255, 208, 208));
+        this.setBackground(Constants.COLOR_BACKGROUND);
 
         Quest quest = QuestRandomizer.selectRandomQuest();
 
@@ -53,20 +49,20 @@ public class GamePanel extends JPanel {
 
         lblHintContent.setBounds(0, 30, 900, 50);
         lblHintContent.setHorizontalAlignment(SwingConstants.CENTER);
-        lblHintContent.setFont(new Font("Comic Sans MS", Font.PLAIN, 40));
+        lblHintContent.setFont(Constants.FONT(40));
 
         lblUsedLetters.setBounds(0, 90, 900, 50);
         lblUsedLetters.setHorizontalAlignment(SwingConstants.CENTER);
-        lblUsedLetters.setFont(new Font("Comic Sans MS", Font.PLAIN, 40));
+        lblUsedLetters.setFont(Constants.FONT(40));
 
         lblTimer.setBounds(0, 150, 900, 50);
         lblTimer.setHorizontalAlignment(SwingConstants.CENTER);
-        lblTimer.setFont(new Font("Comic Sans MS", Font.PLAIN, 40));
+        lblTimer.setFont(Constants.FONT(40));
 
-        pnlWord.setBounds(0, MID_SCREEN_Y + 50, 900, 50);
+        pnlWord.setBounds(0, Constants.MID_SCREEN_Y + 50, 900, 50);
 
-        btnBackToGameMode.setBounds(MID_SCREEN_X - WIDTH_BUTTONS, MID_SCREEN_Y + 400 - HEIGHT_BUTTONS, 2 * WIDTH_BUTTONS, HEIGHT_BUTTONS);
-        btnBackToGameMode.setBackground(new Color(193, 236, 228));
+        btnBackToGameMode.setBounds(Constants.MID_SCREEN_X - Constants.WIDTH_BUTTONS, Constants.MID_SCREEN_Y + 400 - Constants.HEIGHT_BUTTONS, 2 * Constants.WIDTH_BUTTONS, Constants.HEIGHT_BUTTONS);
+        btnBackToGameMode.setBackground(Constants.COLOR_BACK_BUTTON);
 
         btnBackToGameMode.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -81,7 +77,6 @@ public class GamePanel extends JPanel {
         this.add(lblHintContent);
         this.add(lblUsedLetters);
         this.add(pnlWord);
-
         this.add(btnBackToGameMode);
     }
 
@@ -90,7 +85,7 @@ public class GamePanel extends JPanel {
         super.paintComponent(g);
         ImageIcon imageIcon = new ImageIcon("utils/assets/images/Enforcado_resized.gif");
         Image image = imageIcon.getImage();
-        g.drawImage(image, MID_SCREEN_X, MID_SCREEN_Y, null);
+        g.drawImage(image, Constants.MID_SCREEN_X, Constants.MID_SCREEN_Y, null);
         drawHangman(g);
     }
 
@@ -112,67 +107,67 @@ public class GamePanel extends JPanel {
 
         imageIcon = new ImageIcon("utils/assets/images/Enforcado_resized.gif");
         image = imageIcon.getImage();
-        g.drawImage(image, MID_SCREEN_X, MID_SCREEN_Y, null);
+        g.drawImage(image, Constants.MID_SCREEN_X, Constants.MID_SCREEN_Y, null);
 
         imageIcon = new ImageIcon("utils/assets/images/forca_comeco.gif");
         image = imageIcon.getImage();
-        g.drawImage(image, MID_SCREEN_X-50, MID_SCREEN_Y - 100, null);
+        g.drawImage(image, Constants.MID_SCREEN_X-50, Constants.MID_SCREEN_Y - 100, null);
 
         imageIcon = new ImageIcon("utils/assets/images/forca_fim.gif");
         image = imageIcon.getImage();
-        g.drawImage(image, MID_SCREEN_X-50, MID_SCREEN_Y - 170, null);
+        g.drawImage(image, Constants.MID_SCREEN_X-50, Constants.MID_SCREEN_Y - 170, null);
 
         imageIcon = new ImageIcon("utils/assets/images/forquilha.gif");
         image = imageIcon.getImage();
-        g.drawImage(image, MID_SCREEN_X-50, MID_SCREEN_Y - 197, null);
+        g.drawImage(image, Constants.MID_SCREEN_X-50, Constants.MID_SCREEN_Y - 197, null);
 
         imageIcon = new ImageIcon("utils/assets/images/haste.gif");
         image = imageIcon.getImage();
-        g.drawImage(image, MID_SCREEN_X - 1, MID_SCREEN_Y - 197, null);
+        g.drawImage(image, Constants.MID_SCREEN_X - 1, Constants.MID_SCREEN_Y - 197, null);
 
         imageIcon = new ImageIcon("utils/assets/images/corda_comeco.gif");
         image = imageIcon.getImage();
-        g.drawImage(image, MID_SCREEN_X-6, MID_SCREEN_Y - 170, null);
+        g.drawImage(image, Constants.MID_SCREEN_X-6, Constants.MID_SCREEN_Y - 170, null);
 
         imageIcon = new ImageIcon("utils/assets/images/corda_meio.gif");
         image = imageIcon.getImage();
-        g.drawImage(image, MID_SCREEN_X-2, MID_SCREEN_Y-125, null);
+        g.drawImage(image, Constants.MID_SCREEN_X-2, Constants.MID_SCREEN_Y-125, null);
 
         imageIcon = new ImageIcon("utils/assets/images/corda_fim.gif");
         image = imageIcon.getImage();
-        g.drawImage(image, MID_SCREEN_X-2, MID_SCREEN_Y-117, null);
+        g.drawImage(image, Constants.MID_SCREEN_X-2, Constants.MID_SCREEN_Y-117, null);
 
         imageIcon = new ImageIcon("utils/assets/images/cabeca.gif");
         image = imageIcon.getImage();
-        g.drawImage(image, MID_SCREEN_X-4, MID_SCREEN_Y-135, null);
+        g.drawImage(image, Constants.MID_SCREEN_X-4, Constants.MID_SCREEN_Y-135, null);
 
         imageIcon = new ImageIcon("utils/assets/images/queixo.gif");
         image = imageIcon.getImage();
-        g.drawImage(image, MID_SCREEN_X, MID_SCREEN_Y, null);
+        g.drawImage(image, Constants.MID_SCREEN_X, Constants.MID_SCREEN_Y, null);
 
         imageIcon = new ImageIcon("utils/assets/images/tronco.gif");
         image = imageIcon.getImage();
-        g.drawImage(image, MID_SCREEN_X, MID_SCREEN_Y, null);
+        g.drawImage(image, Constants.MID_SCREEN_X, Constants.MID_SCREEN_Y, null);
 
         imageIcon = new ImageIcon("utils/assets/images/cintura.gif");
         image = imageIcon.getImage();
-        g.drawImage(image, MID_SCREEN_X, MID_SCREEN_Y, null);
+        g.drawImage(image, Constants.MID_SCREEN_X, Constants.MID_SCREEN_Y, null);
 
         imageIcon = new ImageIcon("utils/assets/images/mao_direita.gif");
         image = imageIcon.getImage();
-        g.drawImage(image, MID_SCREEN_X, MID_SCREEN_Y, null);
+        g.drawImage(image, Constants.MID_SCREEN_X, Constants.MID_SCREEN_Y, null);
 
         imageIcon = new ImageIcon("utils/assets/images/mao_esquerda.gif");
         image = imageIcon.getImage();
-        g.drawImage(image, MID_SCREEN_X, MID_SCREEN_Y, null);
+        g.drawImage(image, Constants.MID_SCREEN_X, Constants.MID_SCREEN_Y, null);
 
         imageIcon = new ImageIcon("utils/assets/images/pe_direito.gif");
         image = imageIcon.getImage();
-        g.drawImage(image, MID_SCREEN_X, MID_SCREEN_Y, null);
+        g.drawImage(image, Constants.MID_SCREEN_X, Constants.MID_SCREEN_Y, null);
 
         imageIcon = new ImageIcon("utils/assets/images/pe_esquerdo.gif");
         image = imageIcon.getImage();
-        g.drawImage(image, MID_SCREEN_X, MID_SCREEN_Y, null);
+        g.drawImage(image, Constants.MID_SCREEN_X, Constants.MID_SCREEN_Y, null);
     }
 
     private void checkIfFinished() {
@@ -222,8 +217,8 @@ public class GamePanel extends JPanel {
                 i = 0;
             }
 
-            newLetterButton.setBounds(155 + 2 * i * HORIZONTAL_GAP_BUTTONS, 500 + 2 * line * VERTICAL_GAP_BUTTONS, 50,50);
-            newLetterButton.setBackground(COLOR_BUTTONS);
+            newLetterButton.setBounds(155 + 2 * i * Constants.HORIZONTAL_GAP_BUTTONS, 500 + 2 * line * Constants.VERTICAL_GAP_BUTTONS, 50,50);
+            newLetterButton.setBackground(Constants.COLOR_BUTTONS);
 
             newLetterButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
