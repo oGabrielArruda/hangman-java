@@ -102,29 +102,23 @@ public class QuestManagerPanel extends JPanel {
                     hint = hint.trim();
                     hint = hint.replaceAll("\\s+", " ");
 
-                    //talvez seja bom colocar uma frase na tela ao invés de escrever no terminal
                     if(word.equals("")){
-                        new PopupFrame("Erro", "Escreva uma palavra.");
-                        // System.out.println("Escreva uma palavra.");
+                        new PopupFrame("Erro", "Write a word.");
                     }
                     else if(hint.equals("")){
-                        new PopupFrame("Erro", "Escreva uma dica.");
-                        // System.out.println("Escreva uma dica.");
+                        new PopupFrame("Erro", "Write a hint.");
                     }
                     else if(encontraString(word) != -1){
-                        new PopupFrame("Erro", "Palavra já adicionada.");
-                        // System.out.println("Palavra já adicionada.");
+                        new PopupFrame("Erro", "Word already added.");
                     }
                     else{
                         writer.write(word + ";" + hint + "\n");
-                        new PopupFrame("", "Palavra adicionada.");
-                        // System.out.println("Palavra adicionada.");
+                        new PopupFrame("", "Word has been added.");
                     }
                     writer.close();
                 }
                 catch(Exception f) {
-                    new PopupFrame("Erro", "Algum erro inesperado ocorreu na Adição de Palavra.");
-                    // System.out.println("Algum erro inesperado ocorreu na Adição de Palavra.");
+                    new PopupFrame("Error", "Some unexpected error occurred in Word Add.");
                 }
             }
         });
@@ -146,10 +140,10 @@ public class QuestManagerPanel extends JPanel {
                     int tam = encontraString(word);
                     
                     if(word.equals("")){
-                        System.out.println("Escreva uma palavra.");
+                        new PopupFrame("", "Write a word.");
                     }
                     else if(tam == -1){
-                        System.out.println("Palavra não encontrada.");
+                        new PopupFrame("", "Word not found.");
                     }
                     else{
                         String s = "";
@@ -163,12 +157,12 @@ public class QuestManagerPanel extends JPanel {
                         BufferedWriter writer = new BufferedWriter(new FileWriter(file));
                         writer.write(s);
                         writer.close();
-                        System.out.println("Palavra removida.");
+                        new PopupFrame("", "Word has been removed.");
                     }
                     scan.close();
                 }
                 catch(Exception f) {
-                    System.out.println("Algum erro inesperado ocorreu na Remoção de Palavra.");
+                    new PopupFrame("", "Some unexpected error occurred in Word Removal.");
                 }
             }
         });
@@ -201,7 +195,7 @@ public class QuestManagerPanel extends JPanel {
         }
         //se ocorreu algum erro
         catch (IOException e){
-            System.out.println("Algum erro inesperado ocorreu na leitura do Arquivo.");
+            new PopupFrame("", "Some unexpected error occurred in Reading File.");
             return -1;
         }
     }
