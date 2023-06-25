@@ -108,8 +108,70 @@ public class GamePanel extends JPanel {
 
     private void drawHangman(Graphics g) {
         ImageIcon imageIcon;
+        Image image;
+
         imageIcon = new ImageIcon("utils/assets/images/Enforcado_resized.gif");
-        Image image = imageIcon.getImage();
+        image = imageIcon.getImage();
+        g.drawImage(image, MID_SCREEN_X, MID_SCREEN_Y, null);
+
+        imageIcon = new ImageIcon("utils/assets/images/forca_comeco.gif");
+        image = imageIcon.getImage();
+        g.drawImage(image, MID_SCREEN_X-50, MID_SCREEN_Y - 100, null);
+
+        imageIcon = new ImageIcon("utils/assets/images/forca_fim.gif");
+        image = imageIcon.getImage();
+        g.drawImage(image, MID_SCREEN_X-50, MID_SCREEN_Y - 170, null);
+
+        imageIcon = new ImageIcon("utils/assets/images/forquilha.gif");
+        image = imageIcon.getImage();
+        g.drawImage(image, MID_SCREEN_X-50, MID_SCREEN_Y - 197, null);
+
+        imageIcon = new ImageIcon("utils/assets/images/haste.gif");
+        image = imageIcon.getImage();
+        g.drawImage(image, MID_SCREEN_X - 1, MID_SCREEN_Y - 197, null);
+
+        imageIcon = new ImageIcon("utils/assets/images/corda_comeco.gif");
+        image = imageIcon.getImage();
+        g.drawImage(image, MID_SCREEN_X-6, MID_SCREEN_Y - 170, null);
+
+        imageIcon = new ImageIcon("utils/assets/images/corda_meio.gif");
+        image = imageIcon.getImage();
+        g.drawImage(image, MID_SCREEN_X-2, MID_SCREEN_Y-125, null);
+
+        imageIcon = new ImageIcon("utils/assets/images/corda_fim.gif");
+        image = imageIcon.getImage();
+        g.drawImage(image, MID_SCREEN_X-2, MID_SCREEN_Y-117, null);
+
+        imageIcon = new ImageIcon("utils/assets/images/cabeca.gif");
+        image = imageIcon.getImage();
+        g.drawImage(image, MID_SCREEN_X-4, MID_SCREEN_Y-135, null);
+
+        imageIcon = new ImageIcon("utils/assets/images/queixo.gif");
+        image = imageIcon.getImage();
+        g.drawImage(image, MID_SCREEN_X, MID_SCREEN_Y, null);
+
+        imageIcon = new ImageIcon("utils/assets/images/tronco.gif");
+        image = imageIcon.getImage();
+        g.drawImage(image, MID_SCREEN_X, MID_SCREEN_Y, null);
+
+        imageIcon = new ImageIcon("utils/assets/images/cintura.gif");
+        image = imageIcon.getImage();
+        g.drawImage(image, MID_SCREEN_X, MID_SCREEN_Y, null);
+
+        imageIcon = new ImageIcon("utils/assets/images/mao_direita.gif");
+        image = imageIcon.getImage();
+        g.drawImage(image, MID_SCREEN_X, MID_SCREEN_Y, null);
+
+        imageIcon = new ImageIcon("utils/assets/images/mao_esquerda.gif");
+        image = imageIcon.getImage();
+        g.drawImage(image, MID_SCREEN_X, MID_SCREEN_Y, null);
+
+        imageIcon = new ImageIcon("utils/assets/images/pe_direito.gif");
+        image = imageIcon.getImage();
+        g.drawImage(image, MID_SCREEN_X, MID_SCREEN_Y, null);
+
+        imageIcon = new ImageIcon("utils/assets/images/pe_esquerdo.gif");
+        image = imageIcon.getImage();
         g.drawImage(image, MID_SCREEN_X, MID_SCREEN_Y, null);
     }
 
