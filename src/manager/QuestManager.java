@@ -100,7 +100,7 @@ public class QuestManager {
         }
     }
 
-    //find the line with the word in quests.txt
+    //find the line with a given word in quests.txt
     public static int findString(String s){
         try{
             File file = new File(Constants.QUESTS_PATH);   
