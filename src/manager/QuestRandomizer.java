@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import Constants.Constants;
 import model.Quest;
 
 public class QuestRandomizer {
@@ -25,7 +26,7 @@ public class QuestRandomizer {
     private static List<Quest> readQuestItems() {
         List<Quest> questItems = new ArrayList<>();
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(QuestManager.QUESTS_FILE_PATH))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(Constants.QUESTS_PATH))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(";");

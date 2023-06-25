@@ -13,6 +13,7 @@ public class Constants {
     public static final Color COLOR_BUTTONS = new Color(255, 158, 170);
     public static final Color COLOR_BACKGROUND = new Color(255, 208, 208);
     public static final Color COLOR_BACK_BUTTON = new Color(193, 236, 228);
+    public static final String QUESTS_PATH = "files//quests.txt";
 
     public static final Font FONT(int size){
         return new Font("Comic Sans MS", Font.PLAIN, size);

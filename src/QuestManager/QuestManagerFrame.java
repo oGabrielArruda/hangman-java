@@ -9,7 +9,7 @@ public class QuestManagerFrame extends JFrame {
         this.add(new QuestManagerPanel(this));
         this.setTitle("Hangman Game");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setSize(Constants.MID_SCREEN_X, Constants.MID_SCREEN_Y);
+        this.setSize(Constants.SCREEN_X, Constants.SCREEN_Y);
         this.setResizable(false);
         this.setVisible(true);
         this.setLocationRelativeTo(null);
