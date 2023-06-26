@@ -21,6 +21,7 @@ public class HangmanGamePanel extends GamePanel <HangmanGameFrame>{
     private int currentTime;
     private final HangmanGameMode DIFFICULTY;
     private Set<Image> drawnBodyParts;
+    private QuestRandomizer questRandomizer;
 
     public HangmanGamePanel(HangmanGameMode difficulty, HangmanGameFrame gameFrame) {
         super(gameFrame);
@@ -31,7 +32,7 @@ public class HangmanGamePanel extends GamePanel <HangmanGameFrame>{
         this.setLayout(null);
         this.setBackground(Constants.COLOR_BACKGROUND);
 
-        Quest quest = QuestRandomizer.selectRandomQuest();
+        Quest quest = questRandomizer.selectRandomQuest();
 
         // instanciamos o panel que contem a palavra
         pnlWord = new WordPanel(quest.getWord());

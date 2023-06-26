@@ -22,4 +22,8 @@ public class Quest {
     public void setClue(String clue) {
         this.hint = clue;
     }
+
+    public String toString(){
+        return word + ';' + hint + '\n';
+    }
 }

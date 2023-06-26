@@ -10,6 +10,7 @@ import manager.QuestManager;
 
 public class QuestManagerPanel extends JPanel {
     private static final int GAP_BUTTONS = 100;
+    private QuestManager manager;
 
     //Constructor
     public QuestManagerPanel(QuestManagerFrame questManagerFrame) {
@@ -75,7 +76,7 @@ public class QuestManagerPanel extends JPanel {
         //add a quest to quests.txt
         btnAddQuest.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                QuestManager.addWord(txtWord.getText().toLowerCase(), txtHint.getText().toLowerCase());
+                manager.addWord(txtWord.getText().toLowerCase(), txtHint.getText().toLowerCase());
                 txtWord.setText("");
                 txtHint.setText("");
             }
@@ -84,7 +85,7 @@ public class QuestManagerPanel extends JPanel {
         //remove a word from quests.txt
         btnRemoveQuest.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                QuestManager.removeWord(txtWord.getText().toLowerCase());
+                manager.removeWord(txtWord.getText().toLowerCase());
                 txtWord.setText("");
                 txtHint.setText("");
             }

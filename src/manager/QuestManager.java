@@ -1,21 +1,59 @@
 package manager;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import Constants.Constants;
+import Game.IOFiles_Interface;
 import Popup.PopupFrame;
+import model.Quest;
 
-public class QuestManager {
-    //add a quest to quests.txt
-    public static void addWord(String word, String hint){
+public class QuestManager implements IOFiles_Interface <Quest> {
+    public boolean WriteFile (Quest q){
         try{
             File file = new File(Constants.QUESTS_PATH);
-            BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
-            
+            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+            String s = q.toString();
+            writer.write(s);
+            writer.close();
+            return true;
+        }
+        catch(IOException e) {
+            new PopupFrame("Error", "Some unexpected error occurred in QuestManager WriteFile:\n" + e.getMessage());
+            return false;
+        }
+    }
+
+    public ArrayList<Quest> ReadFile(){
+        ArrayList<Quest> questItems = new ArrayList<>();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(Constants.QUESTS_PATH))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(";");
+                if (parts.length == 2) {
+                    String word = parts[0].trim();
+                    String clue = parts[1].trim();
+                    Quest quest = new Quest(word, clue);
+                    questItems.add(quest);
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred while reading the quests file: " + e.getMessage());
+        }
+
+        return questItems;
+    }
+
+    //add a quest to quests.txt
+    public void addWord(String word, String hint){
+        try{
             //remove invalid characters
             word = word.replaceAll("[^A-Za-z\\s]", "");
             word = word.trim();
@@ -38,11 +76,9 @@ public class QuestManager {
 
             //add the quest
             else{
-                writer.write(word + ";" + hint + "\n");
+                this.WriteFile(new Quest(word, hint));
                 new PopupFrame("", "Quest has been added.");
             }
-
-            writer.close();
         }
 
         //error message

@@ -14,11 +14,13 @@ import Menu.MenuFrame;
 public class TicTacToeGamePanel extends GamePanel <TicTacToeGameFrame>{
     private boolean turn; // true: X, false: O
     private ArrayList<JButton> squares;
+    private TicTacToeManager manager;
 
     public TicTacToeGamePanel(TicTacToeGameFrame gameFrame) {
         super(gameFrame);
         this.setLayout(null);
         this.setBackground(Constants.COLOR_BACKGROUND);
+        this.manager =  new TicTacToeManager();
         
         // Escolhe quem começa
         turn = true;
@@ -34,7 +36,7 @@ public class TicTacToeGamePanel extends GamePanel <TicTacToeGameFrame>{
         lblTurn.setBounds(0, Constants.HEIGHT_BUTTONS * 2 - Constants.MID_SCREEN_Y - Constants.VERTICAL_GAP_BUTTONS, Constants.SCREEN_X, Constants.SCREEN_Y);
 
         // Texto do Histórico
-        JLabel lblHistory = new JLabel("X wins / O wins / Draws: " + TicTacToeManager.getHistory(), SwingConstants.CENTER);
+        JLabel lblHistory = new JLabel("X wins / O wins / Draws: " + manager.getHistory(), SwingConstants.CENTER);
         lblHistory.setFont(Constants.FONT(40));
         lblHistory.setBounds(0, Constants.HEIGHT_BUTTONS * 2 - Constants.MID_SCREEN_Y + Constants.VERTICAL_GAP_BUTTONS, Constants.SCREEN_X, Constants.SCREEN_Y);
 
@@ -63,7 +65,6 @@ public class TicTacToeGamePanel extends GamePanel <TicTacToeGameFrame>{
             squares.add(newBtn);
             this.add(newBtn);
         }    
-        
 
         // Reset button
         JButton btnReset = new JButton("Reset History");
@@ -73,7 +74,7 @@ public class TicTacToeGamePanel extends GamePanel <TicTacToeGameFrame>{
         
         btnReset.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                TicTacToeManager.changeHistory('R');
+                manager.changeHistory('R');
                 new TicTacToeGameFrame();
                 gameFrame.dispose();
             }
@@ -170,13 +171,13 @@ public class TicTacToeGamePanel extends GamePanel <TicTacToeGameFrame>{
                 allSquaresFilled = false;
 
         if (xWon) {
-            TicTacToeManager.changeHistory('X');
+            manager.changeHistory('X');
             option = JOptionPane.showConfirmDialog(null, "Player 1 wins! Would you like to play again?", "Nice!", JOptionPane.YES_NO_OPTION);
         } else if (oWon) {
-            TicTacToeManager.changeHistory('O');
+            manager.changeHistory('O');
             option = JOptionPane.showConfirmDialog(null, "Player 2 wins! Would you like to play again?", "Nice!", JOptionPane.YES_NO_OPTION);
         } else if (allSquaresFilled) {
-            TicTacToeManager.changeHistory('D');
+            manager.changeHistory('D');
             option = JOptionPane.showConfirmDialog(null, "Draw! Would you like to play again?", "Old woman", JOptionPane.YES_NO_OPTION);
         } else {
             return;
