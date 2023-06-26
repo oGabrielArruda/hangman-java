@@ -27,19 +27,19 @@ public class HangmanMenuPanel extends JPanel {
         //play button
         JButton btnPlay = new JButton("Play");
         btnPlay.setFont(Constants.FONT(20));
-        btnPlay.setBounds(Constants.MID_SCREEN_X - Constants.WIDTH_BUTTONS, Constants.MID_SCREEN_Y, Constants.WIDTH_BUTTONS * 2, Constants.HEIGHT_BUTTONS * 2);
+        btnPlay.setBounds(Constants.MID_SCREEN_X - Constants.WIDTH_BUTTONS, Constants.MID_SCREEN_Y - Constants.HEIGHT_BUTTONS * 2 - Constants.VERTICAL_GAP_BUTTONS, Constants.WIDTH_BUTTONS * 2, Constants.HEIGHT_BUTTONS * 2);
         btnPlay.setBackground(Constants.COLOR_BUTTONS);
         
         //quest manager button
         JButton btnQuestManager = new JButton("Quest Manager");
         btnQuestManager.setFont(Constants.FONT(20));
-        btnQuestManager.setBounds(Constants.MID_SCREEN_X - Constants.WIDTH_BUTTONS, Constants.MID_SCREEN_Y + Constants.HEIGHT_BUTTONS * 2 + Constants.VERTICAL_GAP_BUTTONS, Constants.WIDTH_BUTTONS * 2, Constants.HEIGHT_BUTTONS * 2);
+        btnQuestManager.setBounds(Constants.MID_SCREEN_X - Constants.WIDTH_BUTTONS, Constants.MID_SCREEN_Y, Constants.WIDTH_BUTTONS * 2, Constants.HEIGHT_BUTTONS * 2);
         btnQuestManager.setBackground(Constants.COLOR_BUTTONS);
 
         // Back to menu button
         JButton btnBackToMenu = new JButton("Back to Menu");
         btnBackToMenu.setFont(Constants.FONT(20));
-        btnBackToMenu.setBounds(Constants.MID_SCREEN_X - Constants.WIDTH_BUTTONS, Constants.MID_SCREEN_Y + 400 - Constants.HEIGHT_BUTTONS, 2 * Constants.WIDTH_BUTTONS, Constants.HEIGHT_BUTTONS);
+        btnBackToMenu.setBounds(Constants.MID_SCREEN_X - Constants.WIDTH_BUTTONS, Constants.MID_SCREEN_Y + Constants.HEIGHT_BUTTONS * 2 + Constants.VERTICAL_GAP_BUTTONS, Constants.WIDTH_BUTTONS * 2, Constants.HEIGHT_BUTTONS * 2);
         btnBackToMenu.setBackground(Constants.COLOR_BACK_BUTTON);
 
         //FUNCTIONS
@@ -60,6 +60,7 @@ public class HangmanMenuPanel extends JPanel {
             }
         });
 
+        //back to menu
         btnBackToMenu.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 new MenuFrame();
