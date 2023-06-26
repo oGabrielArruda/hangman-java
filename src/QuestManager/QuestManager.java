@@ -1,4 +1,4 @@
-package manager;
+package QuestManager;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -13,13 +13,17 @@ import Game.IOFiles_Interface;
 import Popup.PopupFrame;
 import model.Quest;
 
+/*
+ * Classe do Gerenciador de Perguntas
+ */
+
 public class QuestManager implements IOFiles_Interface <Quest> {
     public boolean WriteFile (Quest q){
         try{
             File file = new File(Constants.QUESTS_PATH);
 
             if(q == null){
-                BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
+                BufferedWriter writer = new BufferedWriter(new FileWriter(file));
                 writer.write("");
                 writer.close();
                 return true;
@@ -115,14 +119,18 @@ public class QuestManager implements IOFiles_Interface <Quest> {
             else if(line == -1){
                 new PopupFrame("Error", "Word not found.");
             }
-
-            this.WriteFile(null);
-            //remove the quest
-            for(Quest q : quests){
-                if(!q.getWord().equals(word)){
-                    this.WriteFile(q);
+            else{
+                this.WriteFile(null);
+                //remove the quest
+                for(Quest q : quests){
+                    if(!q.getWord().equals(word)){
+                        this.WriteFile(q);
+                    }
                 }
+    
+                new PopupFrame("", "Quest has been removed.");
             }
+
         }
 
         //error message

@@ -3,6 +3,10 @@ package QuestManager;
 import Constants.Constants;
 import javax.swing.*;
 
+/*
+ * Classe do Frame do Gerenciador de Perguntas
+ */
+
 public class QuestManagerFrame extends JFrame {
 
     public QuestManagerFrame() {

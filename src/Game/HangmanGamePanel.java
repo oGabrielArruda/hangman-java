@@ -11,7 +11,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import GameMode.*;
-import manager.QuestRandomizer;
+import QuestManager.QuestRandomizer;
 import model.Quest;
 
 public class HangmanGamePanel extends GamePanel <HangmanGameFrame>{

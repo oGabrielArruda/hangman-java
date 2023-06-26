@@ -8,29 +8,33 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class HangmanMenuPanel extends JPanel {
-    //Constructor
-    public HangmanMenuPanel(HangmanMenuFrame menuFrame) {
-        //VISUAL
+/*
+ * Classe do Menu da Forca
+ */
 
-        //no layout
+public class HangmanMenuPanel extends JPanel {
+    // Constructor
+    public HangmanMenuPanel(HangmanMenuFrame menuFrame) {
+        // VISUAL
+
+        // no layout
         this.setLayout(null);
 
-        //set background color
+        // set background color
         this.setBackground(Constants.COLOR_BACKGROUND);
 
-        //title text
+        // title text
         JLabel lblWelcome = new JLabel("Welcome to Hangman!", SwingConstants.CENTER);
         lblWelcome.setFont(Constants.FONT(40));
         lblWelcome.setBounds(0, Constants.HEIGHT_BUTTONS * 2 - Constants.MID_SCREEN_Y, Constants.SCREEN_X, Constants.SCREEN_Y);
 
-        //play button
+        // play button
         JButton btnPlay = new JButton("Play");
         btnPlay.setFont(Constants.FONT(20));
         btnPlay.setBounds(Constants.MID_SCREEN_X - Constants.WIDTH_BUTTONS, Constants.MID_SCREEN_Y - Constants.HEIGHT_BUTTONS * 2 - Constants.VERTICAL_GAP_BUTTONS, Constants.WIDTH_BUTTONS * 2, Constants.HEIGHT_BUTTONS * 2);
         btnPlay.setBackground(Constants.COLOR_BUTTONS);
         
-        //quest manager button
+        // quest manager button
         JButton btnQuestManager = new JButton("Quest Manager");
         btnQuestManager.setFont(Constants.FONT(20));
         btnQuestManager.setBounds(Constants.MID_SCREEN_X - Constants.WIDTH_BUTTONS, Constants.MID_SCREEN_Y, Constants.WIDTH_BUTTONS * 2, Constants.HEIGHT_BUTTONS * 2);
@@ -42,9 +46,9 @@ public class HangmanMenuPanel extends JPanel {
         btnBackToMenu.setBounds(Constants.MID_SCREEN_X - Constants.WIDTH_BUTTONS, Constants.MID_SCREEN_Y + Constants.HEIGHT_BUTTONS * 2 + Constants.VERTICAL_GAP_BUTTONS, Constants.WIDTH_BUTTONS * 2, Constants.HEIGHT_BUTTONS * 2);
         btnBackToMenu.setBackground(Constants.COLOR_BACK_BUTTON);
 
-        //FUNCTIONS
+        // FUNCTIONS
 
-        //open play menu
+        // open play menu
         btnPlay.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 new HangmanGameModeFrame();
@@ -52,7 +56,7 @@ public class HangmanMenuPanel extends JPanel {
             }
         });
 
-        //open quest manager menu
+        // open quest manager menu
         btnQuestManager.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 new QuestManagerFrame();
@@ -60,7 +64,7 @@ public class HangmanMenuPanel extends JPanel {
             }
         });
 
-        //back to menu
+        // back to menu
         btnBackToMenu.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 new MenuFrame();
@@ -68,10 +72,10 @@ public class HangmanMenuPanel extends JPanel {
             }
         });
 
-        //add label
+        // add label
         this.add(lblWelcome);
 
-        //add buttons
+        // add buttons
         this.add(btnPlay);
         this.add(btnQuestManager);
         this.add(btnBackToMenu);

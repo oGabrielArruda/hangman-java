@@ -7,6 +7,10 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/*
+ * Classe do Menu Principal
+ */
+
 public class MenuPanel extends JPanel {
     //Constructor
     public MenuPanel(MenuFrame menuFrame) {

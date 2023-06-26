@@ -4,6 +4,10 @@ import Constants.Constants;
 
 import javax.swing.*;
 
+/*
+ * Classe do Frame do Menu Principal
+ */
+
 public class MenuFrame extends JFrame  {
 
     public MenuFrame() {

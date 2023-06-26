@@ -6,11 +6,14 @@ import java.awt.event.ActionListener;
 
 import Constants.Constants;
 import Menu.HangmanMenuFrame;
-import manager.QuestManager;
+
+/*
+ * Classe do Gerenciador de Perguntas
+ */
 
 public class QuestManagerPanel extends JPanel {
     private static final int GAP_BUTTONS = 100;
-    private QuestManager manager;
+    private QuestManager manager = new QuestManager();
 
     //Constructor
     public QuestManagerPanel(QuestManagerFrame questManagerFrame) {

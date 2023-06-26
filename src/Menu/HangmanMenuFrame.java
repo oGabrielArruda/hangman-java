@@ -3,6 +3,10 @@ package Menu;
 import Constants.Constants;
 import javax.swing.*;
 
+/*
+ * Classe do Frame do Menu da Forca
+ */
+
 public class HangmanMenuFrame extends JFrame  {
 
     public HangmanMenuFrame() {

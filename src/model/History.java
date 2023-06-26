@@ -1,16 +1,28 @@
 package model;
 
+/*
+ * Classe do Histórico do Jogo da Velha
+ */
+
 public class History {
+    //X wins, O wins, Draws
     private int x;
     private int o;
     private int d;
     
+    // Constructor
     public History(int x, int o, int d) {
         this.x = x;
         this.o = o;
         this.d = d;
     }
 
+    // To String
+    public String toString(){
+        return Integer.toString(x) + " / " + Integer.toString(o) + " / " + Integer.toString(d);
+    }
+
+    // Getters e Setters
     public int getx() {
         return x;
     }
@@ -30,9 +42,5 @@ public class History {
     }
     public void setd(int d) {
         this.d = d;
-    }
-
-    public String toString(){
-        return Integer.toString(x) + " / " + Integer.toString(o) + " / " + Integer.toString(d);
     }
 }
