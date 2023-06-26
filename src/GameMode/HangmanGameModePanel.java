@@ -6,15 +6,15 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import Game.GameFrame;
-import Menu.MenuFrame;
+import Game.HangmanGameFrame;
+import Menu.HangmanMenuFrame;
 
-public class GameModePanel extends JPanel {
+public class HangmanGameModePanel extends JPanel {
     private static final int WIDTH_BUTTONS = Constants.WIDTH_BUTTONS * 3/2;
     private static final int HEIGHT_BUTTONS = Constants.HEIGHT_BUTTONS * 3/2;
     private static final int VERTICAL_GAP_BUTTONS = Constants.VERTICAL_GAP_BUTTONS * 3/2;
 
-    public GameModePanel(GameModeFrame gameModeFrame) {
+    public HangmanGameModePanel(HangmanGameModeFrame gameModeFrame) {
         this.setLayout(null);
         this.setBackground(Constants.COLOR_BACKGROUND);
 
@@ -48,28 +48,28 @@ public class GameModePanel extends JPanel {
         // para cada botão, redirecionamos o jogador para a tela do jogo com a dificuldade desejada
         btnEasy.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new GameFrame(GameMode.EASY);
+                new HangmanGameFrame(HangmanGameMode.EASY);
                 gameModeFrame.dispose();
             }
         });
 
         btnMedium.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new GameFrame(GameMode.MEDIUM);
+                new HangmanGameFrame(HangmanGameMode.MEDIUM);
                 gameModeFrame.dispose();
             }
         });
 
         btnHard.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new GameFrame(GameMode.HARD);
+                new HangmanGameFrame(HangmanGameMode.HARD);
                 gameModeFrame.dispose();
             }
         });
 
         btnBackToMenu.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new MenuFrame();
+                new HangmanMenuFrame();
                 gameModeFrame.dispose();
             }
         });

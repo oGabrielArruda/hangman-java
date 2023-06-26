@@ -1,6 +1,6 @@
 package GameMode;
 
-public enum GameMode {
+public enum HangmanGameMode {
 
     EASY(0),
     MEDIUM(1),
@@ -9,7 +9,7 @@ public enum GameMode {
     private int difficulty;
     private int time;
     
-    GameMode(int difficulty) {
+    HangmanGameMode(int difficulty) {
         this.difficulty = difficulty;
         switch (difficulty) {
             case 0:

@@ -1,10 +1,12 @@
 package main;
 
+import Menu.HangmanMenuFrame;
 import Menu.MenuFrame;
 
 public class Main {
 
     public static void main(String[] args) {
+        // new HangmanMenuFrame();
         new MenuFrame();
 /*
         Scanner myObj = new Scanner(System.in);

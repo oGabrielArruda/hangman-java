@@ -8,13 +8,14 @@ import java.util.List;
 import java.util.Random;
 
 import Constants.Constants;
+import Popup.PopupFrame;
 import model.Quest;
 
 public class QuestRandomizer {
     public static Quest selectRandomQuest() {
         List<Quest> questItems = readQuestItems();
         if (questItems.isEmpty()) {
-            System.out.println("No quests found!");
+            new PopupFrame("Error", "No quests found!");
             return null;
         }
 

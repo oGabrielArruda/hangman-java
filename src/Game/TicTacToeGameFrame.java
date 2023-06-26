@@ -1,12 +1,12 @@
-package GameMode;
+package Game;
 
 import Constants.Constants;
 import javax.swing.*;
 
-public class GameModeFrame extends JFrame {
-    public GameModeFrame() {
-        this.add(new GameModePanel(this));
-        this.setTitle("Hangman Game");
+public class TicTacToeGameFrame extends JFrame {
+    public TicTacToeGameFrame() {
+        this.add(new TicTacToeGamePanel(this));
+        this.setTitle("TicTacToe");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setSize(Constants.SCREEN_X, Constants.SCREEN_Y);
         this.setResizable(false);

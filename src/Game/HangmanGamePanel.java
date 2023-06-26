@@ -14,16 +14,16 @@ import GameMode.*;
 import manager.QuestRandomizer;
 import model.Quest;
 
-public class GamePanel extends JPanel {
+public class HangmanGamePanel extends JPanel {
     private WordPanel pnlWord;
     private HangmanState hangmanState;
-    private GameFrame gameFrame;
+    private HangmanGameFrame gameFrame;
     private Timer timer;
     private int currentTime;
-    private final GameMode DIFFICULTY;
+    private final HangmanGameMode DIFFICULTY;
     private Set<Image> drawnBodyParts;
 
-    public GamePanel(GameMode difficulty, GameFrame gameFrame) {
+    public HangmanGamePanel(HangmanGameMode difficulty, HangmanGameFrame gameFrame) {
         this.hangmanState = HangmanState.HEAD;
         this.DIFFICULTY = difficulty;
         this.gameFrame = gameFrame;
@@ -73,7 +73,7 @@ public class GamePanel extends JPanel {
 
         btnBackToGameMode.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new GameModeFrame();
+                new HangmanGameModeFrame();
                 gameFrame.dispose();
             }
         });
@@ -185,9 +185,9 @@ public class GamePanel extends JPanel {
     private void restart(int option) {
         if (option == 3) return;
         if (option == 0) {
-            new GameFrame(DIFFICULTY);
+            new HangmanGameFrame(DIFFICULTY);
         } else {
-            new GameModeFrame();
+            new HangmanGameModeFrame();
         }
         this.gameFrame.dispose();
     }

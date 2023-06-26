@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import Constants.Constants;
-import Menu.MenuFrame;
+import Menu.HangmanMenuFrame;
 import manager.QuestManager;
 
 public class QuestManagerPanel extends JPanel {
@@ -67,7 +67,7 @@ public class QuestManagerPanel extends JPanel {
         //back to menu
         btnBackToMenu.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new MenuFrame();
+                new HangmanMenuFrame();
                 questManagerFrame.dispose();
             }
         });
