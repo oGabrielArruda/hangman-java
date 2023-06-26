@@ -7,7 +7,8 @@ import Constants.Constants;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
+import java.util.HashSet;
+import java.util.Set;
 
 import GameMode.*;
 import manager.QuestRandomizer;
@@ -20,11 +21,13 @@ public class GamePanel extends JPanel {
     private Timer timer;
     private int currentTime;
     private final GameMode DIFFICULTY;
+    private Set<Image> drawnBodyParts;
 
     public GamePanel(GameMode difficulty, GameFrame gameFrame) {
         this.hangmanState = HangmanState.HEAD;
         this.DIFFICULTY = difficulty;
         this.gameFrame = gameFrame;
+        this.drawnBodyParts = new HashSet<>();
 
         this.setLayout(null);
         this.setBackground(Constants.COLOR_BACKGROUND);
@@ -87,7 +90,17 @@ public class GamePanel extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        drawHangman(g);
+       
+        // Desenhamos a base da forca
+        drawHangmanBase(g);
+
+        // Desenhamos os pedaços do homem na forca
+        // de acordo com a lista de controle de "erros"
+        for (Image bodyPart : drawnBodyParts) {
+            ImageIcon imageIcon = new ImageIcon(bodyPart.getImagePath());
+            java.awt.Image rawImage = imageIcon.getImage();
+            g.drawImage(rawImage, bodyPart.getXCoordinate(), bodyPart.getYCoordinate(), null);
+        }
     }
 
     // método de verificação de derrota por erros de letras
@@ -105,9 +118,9 @@ public class GamePanel extends JPanel {
         return pnlWord.hasGuessedAllLetters() && hangmanState != HangmanState.HANGED && currentTime >= 0;
     }
 
-    private void drawHangman(Graphics g) {
+    private void drawHangmanBase(Graphics g) {
         ImageIcon imageIcon;
-        Image image;
+        java.awt.Image image;
 
         imageIcon = new ImageIcon("utils/assets/images/Enforcado_resized.gif");
         image = imageIcon.getImage();
@@ -144,38 +157,6 @@ public class GamePanel extends JPanel {
         imageIcon = new ImageIcon("utils/assets/images/corda_fim.gif");
         image = imageIcon.getImage();
         g.drawImage(image, Constants.MID_SCREEN_X-2, Constants.MID_SCREEN_Y-117, null);
-
-        imageIcon = new ImageIcon("utils/assets/images/cabeca.gif");
-        image = imageIcon.getImage();
-        g.drawImage(image, Constants.MID_SCREEN_X-4, Constants.MID_SCREEN_Y-150, null);
-
-        imageIcon = new ImageIcon("utils/assets/images/queixo.gif");
-        image = imageIcon.getImage();
-        g.drawImage(image, Constants.MID_SCREEN_X, Constants.MID_SCREEN_Y-110, null);
-
-        imageIcon = new ImageIcon("utils/assets/images/tronco.gif");
-        image = imageIcon.getImage();
-        g.drawImage(image, Constants.MID_SCREEN_X, Constants.MID_SCREEN_Y-102, null);
-
-        imageIcon = new ImageIcon("utils/assets/images/cintura.gif");
-        image = imageIcon.getImage();
-        g.drawImage(image, Constants.MID_SCREEN_X, Constants.MID_SCREEN_Y-61, null);
-
-        imageIcon = new ImageIcon("utils/assets/images/mao_direita.gif");
-        image = imageIcon.getImage();
-        g.drawImage(image, Constants.MID_SCREEN_X + 32, Constants.MID_SCREEN_Y - 102, null);
-
-        imageIcon = new ImageIcon("utils/assets/images/mao_esquerda.gif");
-        image = imageIcon.getImage();
-        g.drawImage(image, Constants.MID_SCREEN_X - 29, Constants.MID_SCREEN_Y - 110, null);
-
-        imageIcon = new ImageIcon("utils/assets/images/pe_direito.gif");
-        image = imageIcon.getImage();
-        g.drawImage(image, Constants.MID_SCREEN_X+18, Constants.MID_SCREEN_Y-36, null);
-
-        imageIcon = new ImageIcon("utils/assets/images/pe_esquerdo.gif");
-        image = imageIcon.getImage();
-        g.drawImage(image, Constants.MID_SCREEN_X-18, Constants.MID_SCREEN_Y-36, null);
     }
 
     private void checkIfFinished() {
@@ -240,6 +221,17 @@ public class GamePanel extends JPanel {
 
                     // caso o usuário erre a letra
                     if (!matches) {
+            
+                        // Pegamos as imagens do estado atual
+                        Set<Image> images = hangmanState.getImages();
+
+                        // Adicionamos as imagens na lista de imagens do corpo
+                        // E então, chamamos o método para repintar a tela
+                        for(Image image : images) {
+                            drawnBodyParts.add(image);
+                            repaint();
+                        }
+
                         lblUsedLetters.setText(lblUsedLetters.getText() + " " + letter);
                         hangmanState = HangmanState.nextBodyPart(hangmanState);
                     }
