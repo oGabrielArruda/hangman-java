@@ -4,7 +4,6 @@ import javax.swing.*;
 
 import Constants.Constants;
 
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -25,6 +24,7 @@ public class TicTacToeGamePanel extends GamePanel {
 
         squares = new ArrayList<>();
 
+        // Cria os botões para cada quadrado
         for (int i = 0; i < 9; ++i) {
             
             JButton newBtn = new JButton();
@@ -34,6 +34,9 @@ public class TicTacToeGamePanel extends GamePanel {
 
             newBtn.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
+                    /*
+                     * Método acionado ao clicar em uma das casas
+                     */
                     if (newBtn.getText().length() == 0) { // Ainda não foi usado
                         if (turn) {
                             newBtn.setText("X");
@@ -149,6 +152,9 @@ public class TicTacToeGamePanel extends GamePanel {
     }
 
     public void restart(int option) {
+        /*
+         * Reinicia o jogo
+         */
         if (option == 3) return;
         if (option == 0)
             new TicTacToeGameFrame();
