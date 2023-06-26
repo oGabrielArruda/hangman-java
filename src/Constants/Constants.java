@@ -18,6 +18,7 @@ public class Constants {
     public static final Color COLOR_BACKGROUND = new Color(255, 208, 208);
     public static final Color COLOR_BACK_BUTTON = new Color(193, 236, 228);
     public static final String QUESTS_PATH = "files//quests.txt";
+    public static final String TICTAC_PATH = "files//tictac.txt";
     public static final String SONG_PATH = "utils/assets/songs/C418.wav";
 
     public static final Font FONT(int size){

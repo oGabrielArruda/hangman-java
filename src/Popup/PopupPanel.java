@@ -10,7 +10,7 @@ public class PopupPanel extends JPanel {
         JLabel lblContent = new JLabel(content);
         lblContent.setBounds(0, Constants.MID_SCREEN_Y/3, Constants.MID_SCREEN_X, Constants.HEIGHT_BUTTONS);
         lblContent.setHorizontalAlignment(SwingConstants.CENTER);
-        lblContent.setFont(Constants.FONT(30));
+        lblContent.setFont(Constants.FONT(15));
         this.add(lblContent);
     }
 }
