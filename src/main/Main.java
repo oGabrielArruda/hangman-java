@@ -12,11 +12,12 @@ import javax.sound.sampled.SourceDataLine;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 import Menu.MenuFrame;
+import Constants.Constants;
 
 public class Main {
     public static void main(String[] args) {
         new MenuFrame();
-        playBackgroundSong("utils/assets/songs/C418.wav");
+        playBackgroundSong(Constants.SONG_PATH);
     }
 
     public static void playBackgroundSong(String audioFilePath) {
