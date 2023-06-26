@@ -160,6 +160,9 @@ public class HangmanGamePanel extends GamePanel {
     }
 
     public void checkIfFinished() {
+        /*
+         * Checa se o jogo acabou
+         */
         int option = 3;
         if (hasWon()) {
             timer.stop();
@@ -172,6 +175,9 @@ public class HangmanGamePanel extends GamePanel {
     }
 
     private void checkIfFinishedTime() {
+        /*
+         * Checa se o tempo acabou
+         */
         int option = 3;
         if (hasLost() || hasWon()){
             timer.stop();
@@ -183,6 +189,9 @@ public class HangmanGamePanel extends GamePanel {
     }
 
     public void restart(int option) {
+        /*
+         * Reinicia o jogo
+         */
         if (option == 3) return;
         if (option == 0) {
             new HangmanGameFrame(DIFFICULTY);

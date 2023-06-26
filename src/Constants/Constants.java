@@ -1,6 +1,10 @@
 package Constants;
 import java.awt.*;
 
+/*
+ * Arquivo com as constantes utilizadas.
+ */
+
 public class Constants {
     public static final int SCREEN_X = 900;
     public static final int SCREEN_Y = 900;
