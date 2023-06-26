@@ -18,6 +18,8 @@ import model.Quest;
  */
 
 public class QuestManager implements IOFiles_Interface <Quest> {
+    // write a new quest on the file
+    // if q = null, resets the file
     public boolean WriteFile (Quest q){
         try{
             File file = new File(Constants.QUESTS_PATH);
@@ -36,11 +38,12 @@ public class QuestManager implements IOFiles_Interface <Quest> {
             return true;
         }
         catch(IOException e) {
-            new PopupFrame("Error", "Some unexpected error occurred in QuestManager WriteFile:\n" + e.getMessage());
+            new PopupFrame("Error", "An error occurred while writing on the quests file:" + e.getMessage());
             return false;
         }
     }
 
+    // read the file an returns an array of quests
     public ArrayList<Quest> ReadFile(){
         ArrayList<Quest> questItems = new ArrayList<>();
 
@@ -56,14 +59,13 @@ public class QuestManager implements IOFiles_Interface <Quest> {
                 }
             }
         } catch (IOException e) {
-            System.out.println("An error occurred while reading the quests file: " + e.getMessage());
+            new PopupFrame("Error", "An error occurred while reading the quests file: " + e.getMessage());
             return null;
         }
         return questItems;
-
     }
 
-    //add a quest to quests.txt
+    // add a quest to quests.txt
     public void addWord(String word, String hint){
         try{
             //remove invalid characters
@@ -95,11 +97,11 @@ public class QuestManager implements IOFiles_Interface <Quest> {
 
         //error message
         catch(Exception e) {
-            new PopupFrame("Error", "Some unexpected error occurred in Quest Add:\n" + e.getMessage());
+            new PopupFrame("Error", "Some unexpected error occurred adding a Quest:\n" + e.getMessage());
         }
     }
 
-    //remove a quest from quests.txt
+    // remove a quest from quests.txt
     public void removeWord(String word){
         try{
             ArrayList<Quest> quests = this.ReadFile();
@@ -109,7 +111,7 @@ public class QuestManager implements IOFiles_Interface <Quest> {
             word = word.trim();
             word = word.replaceAll("\\s+", " ");
             
-            //find the word
+            //find the word line
             int line = findLine(quests, word);
             
             //catch errors
@@ -119,9 +121,10 @@ public class QuestManager implements IOFiles_Interface <Quest> {
             else if(line == -1){
                 new PopupFrame("Error", "Word not found.");
             }
+
+            //remove the line with the given word
             else{
                 this.WriteFile(null);
-                //remove the quest
                 for(Quest q : quests){
                     if(!q.getWord().equals(word)){
                         this.WriteFile(q);
@@ -135,18 +138,18 @@ public class QuestManager implements IOFiles_Interface <Quest> {
 
         //error message
         catch(Exception e) {
-            new PopupFrame("", "Some unexpected error occurred in Quest Removal:\n" + e.getMessage());
+            new PopupFrame("", "Some unexpected error occurred removing a Quest:\n" + e.getMessage());
         }
     }
 
     //find the line with a given word in quests.txt
     public static int findLine(ArrayList<Quest> quests, String word){
-        int linha = -1;
+        int line = -1;
         boolean ok = false;
         
-        //find the word
+        //try to find the word
         for(Quest q : quests){
-            String w = q.getWord(); linha ++;
+            String w = q.getWord(); line ++;
 
             if(word.equals(w)){
                 ok = true;
@@ -154,8 +157,7 @@ public class QuestManager implements IOFiles_Interface <Quest> {
             }
         }
 
-        //test if found
-        if (ok) return linha;
+        if (ok) return line;
         else return -1;
     }
 }
