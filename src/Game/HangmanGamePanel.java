@@ -14,19 +14,18 @@ import GameMode.*;
 import manager.QuestRandomizer;
 import model.Quest;
 
-public class HangmanGamePanel extends GamePanel {
+public class HangmanGamePanel extends GamePanel <HangmanGameFrame>{
     private WordPanel pnlWord;
     private HangmanState hangmanState;
-    private HangmanGameFrame gameFrame;
     private Timer timer;
     private int currentTime;
     private final HangmanGameMode DIFFICULTY;
     private Set<Image> drawnBodyParts;
 
     public HangmanGamePanel(HangmanGameMode difficulty, HangmanGameFrame gameFrame) {
+        super(gameFrame);
         this.hangmanState = HangmanState.HEAD;
         this.DIFFICULTY = difficulty;
-        this.gameFrame = gameFrame;
         this.drawnBodyParts = new HashSet<>();
 
         this.setLayout(null);

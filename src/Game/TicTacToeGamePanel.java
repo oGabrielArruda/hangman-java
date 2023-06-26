@@ -10,13 +10,12 @@ import java.util.ArrayList;
 
 import Menu.MenuFrame;
 
-public class TicTacToeGamePanel extends GamePanel {
-    private TicTacToeGameFrame gameFrame;
+public class TicTacToeGamePanel extends GamePanel <TicTacToeGameFrame>{
     private boolean turn; // true: X, false: O
     private ArrayList<JButton> squares;
 
     public TicTacToeGamePanel(TicTacToeGameFrame gameFrame) {
-        this.gameFrame = gameFrame;
+        super(gameFrame);
         this.setLayout(null);
         this.setBackground(Constants.COLOR_BACKGROUND);
         
