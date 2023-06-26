@@ -7,3 +7,4 @@ estrelicia;flor
 tornado;fenomeno
 yvens;bonito
 sergio;nome de uma pessoa
+pontepreta;maior time do interior

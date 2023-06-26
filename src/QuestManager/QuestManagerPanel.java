@@ -76,6 +76,8 @@ public class QuestManagerPanel extends JPanel {
         btnAddQuest.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 QuestManager.addWord(txtWord.getText().toLowerCase(), txtHint.getText().toLowerCase());
+                txtWord.setText("");
+                txtHint.setText("");
             }
         });
 
@@ -83,6 +85,8 @@ public class QuestManagerPanel extends JPanel {
         btnRemoveQuest.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 QuestManager.removeWord(txtWord.getText().toLowerCase());
+                txtWord.setText("");
+                txtHint.setText("");
             }
         });
        
