@@ -7,12 +7,14 @@ import Constants.Constants;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import Menu.MenuFrame;
 
 public class TicTacToeGamePanel extends GamePanel {
     private TicTacToeGameFrame gameFrame;
     private boolean turn; // true: X, false: O
+    private ArrayList<JButton> squares;
 
     public TicTacToeGamePanel(TicTacToeGameFrame gameFrame) {
         this.gameFrame = gameFrame;
@@ -21,7 +23,10 @@ public class TicTacToeGamePanel extends GamePanel {
         
         turn = true;
 
+        squares = new ArrayList<>();
+
         for (int i = 0; i < 9; ++i) {
+            
             JButton newBtn = new JButton();
             newBtn.setBounds(230 + 2*(i%3) * (Constants.HORIZONTAL_GAP_BUTTONS + 50), 200 + 2 * (i/3) * (Constants.VERTICAL_GAP_BUTTONS + 50), 130,130);
             newBtn.setBackground(Constants.COLOR_BUTTONS);
@@ -36,9 +41,12 @@ public class TicTacToeGamePanel extends GamePanel {
                             newBtn.setText("O");
                         }
                         turn = !turn;
+                        checkIfFinished();
                     }
                 }
             });
+
+            squares.add(newBtn);
             this.add(newBtn);
         }
         
@@ -57,27 +65,95 @@ public class TicTacToeGamePanel extends GamePanel {
         this.add(btnBackToMenu);
     }
 
-    public boolean hasLost() {
-        return true;
-    }
-
-    public boolean hasWon() {
-        return true;
-    }
-
     public void checkIfFinished() {
         int option = 3;
-        if (hasWon()) {
-            option = JOptionPane.showConfirmDialog(null, "Congrats! You have won! Would you like to play again?", "Nice!", JOptionPane.YES_NO_OPTION);
-        }else if (hasLost()) {
-            option = JOptionPane.showConfirmDialog(null, "Looks like you have lost! Would you like to play again?", "Too bad :/", JOptionPane.YES_NO_OPTION);
+
+        boolean xWon = false, oWon = false;
+
+        // Checa se se alguma linha está completa
+        for (int i = 0; i < 9; i+=3) {
+            if (
+                squares.get(i).getText().equals("X") && 
+                squares.get(i+1).getText().equals("X") &&
+                squares.get(i+2).getText().equals("X")
+                )
+                xWon = true;
+            else if (
+                squares.get(i).getText().equals("O") && 
+                squares.get(i+1).getText().equals("O") &&
+                squares.get(i+2).getText().equals("O")
+                )
+                oWon = true;
+        }
+
+        // Checa se se alguma coluna está completa
+        for (int i = 0; i < 3; ++i) {
+            if (
+                squares.get(i).getText().equals("X") && 
+                squares.get(i+3).getText().equals("X") &&
+                squares.get(i+6).getText().equals("X")
+                )
+                xWon = true;
+            else if (
+                squares.get(i).getText().equals("O") && 
+                squares.get(i+3).getText().equals("O") &&
+                squares.get(i+6).getText().equals("O")
+                )
+                oWon = true;
+        }
+
+        // Checa se alguma diagonal está completa
+
+        if (
+            squares.get(0).getText().equals("X") && 
+            squares.get(4).getText().equals("X") &&
+            squares.get(8).getText().equals("X")
+            )
+            xWon = true;
+        else if (
+            squares.get(0).getText().equals("O") && 
+            squares.get(4).getText().equals("O") &&
+            squares.get(8).getText().equals("O")
+            )
+            oWon = true;
+
+        if (
+            squares.get(2).getText().equals("X") && 
+            squares.get(4).getText().equals("X") &&
+            squares.get(6).getText().equals("X")
+            )
+            xWon = true;
+        else if (
+            squares.get(2).getText().equals("O") && 
+            squares.get(4).getText().equals("O") &&
+            squares.get(6).getText().equals("O")
+            )
+            oWon = true;
+
+        // Checa se deu velha
+        boolean allSquaresFilled = true;
+        for (int i = 0; i < 9; ++i)
+            if (squares.get(i).getText().equals(""))
+                allSquaresFilled = false;
+
+        if (xWon) {
+            option = JOptionPane.showConfirmDialog(null, "Player 1 wins! Would you like to play again?", "Nice!", JOptionPane.YES_NO_OPTION);
+        } else if (oWon) {
+            option = JOptionPane.showConfirmDialog(null, "Player 2 wins! Would you like to play again?", "Nice!", JOptionPane.YES_NO_OPTION);
+        } else if (allSquaresFilled) {
+            option = JOptionPane.showConfirmDialog(null, "Draw! Would you like to play again?", "Old woman", JOptionPane.YES_NO_OPTION);
+        } else {
+            return;
         }
         restart(option);
     }
 
     public void restart(int option) {
         if (option == 3) return;
-        new TicTacToeGameFrame();
+        if (option == 0)
+            new TicTacToeGameFrame();
+        else
+            new MenuFrame();
         this.gameFrame.dispose();
     }
 }

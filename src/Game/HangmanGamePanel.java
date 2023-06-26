@@ -104,7 +104,7 @@ public class HangmanGamePanel extends GamePanel {
     }
 
     // método de verificação de derrota por erros de letras
-    public boolean hasLost() {
+    private boolean hasLost() {
         return hangmanState == HangmanState.HANGED;
     }
 
@@ -114,7 +114,7 @@ public class HangmanGamePanel extends GamePanel {
     }
 
     // método de verificação de vitória
-    public boolean hasWon() {
+    private boolean hasWon() {
         return pnlWord.hasGuessedAllLetters() && hangmanState != HangmanState.HANGED && currentTime >= 0;
     }
 
