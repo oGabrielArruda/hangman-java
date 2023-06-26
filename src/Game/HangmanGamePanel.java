@@ -14,6 +14,10 @@ import GameMode.*;
 import QuestManager.QuestRandomizer;
 import model.Quest;
 
+/*
+ * Classe do Jogo da Forca
+ */
+
 public class HangmanGamePanel extends GamePanel <HangmanGameFrame>{
     private WordPanel pnlWord;
     private HangmanState hangmanState;
@@ -23,6 +27,7 @@ public class HangmanGamePanel extends GamePanel <HangmanGameFrame>{
     private Set<Image> drawnBodyParts;
     private QuestRandomizer questRandomizer = new QuestRandomizer();
 
+    // Constructor
     public HangmanGamePanel(HangmanGameMode difficulty, HangmanGameFrame gameFrame) {
         super(gameFrame);
         this.hangmanState = HangmanState.HEAD;
@@ -32,17 +37,20 @@ public class HangmanGamePanel extends GamePanel <HangmanGameFrame>{
         this.setLayout(null);
         this.setBackground(Constants.COLOR_BACKGROUND);
 
+        // escolhe uma pergunta aleatória
         Quest quest = questRandomizer.selectRandomQuest();
 
         // instanciamos o panel que contem a palavra
         pnlWord = new WordPanel(quest.getWord());
 
+        // adiciona visuais
         JLabel lblTimer = new JLabel();
         JLabel lblUsedLetters = new JLabel("Used letters: ");
         JLabel lblHintContent = new JLabel(quest.getHint().toUpperCase());
 
         JButton btnBackToGameMode = new JButton("Back to Game Mode Selection");
 
+        // implementa o timer que depende da dificuldade escolhida
         currentTime = difficulty.getTime();
         this.timer = new Timer(1000, new ActionListener(){
             @Override

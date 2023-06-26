@@ -3,7 +3,7 @@ package Game;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
+/*
  * Enum para controlar o estado da forca
  * Cada estado tem imagens correspondentes
  */
