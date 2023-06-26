@@ -1,7 +1,6 @@
 package Menu;
 
 import Constants.Constants;
-import GameMode.HangmanGameMode;
 import GameMode.HangmanGameModeFrame;
 import QuestManager.QuestManagerFrame;
 

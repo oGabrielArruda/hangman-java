@@ -1,6 +1,5 @@
 package main;
 
-import Menu.HangmanMenuFrame;
 import Menu.MenuFrame;
 
 public class Main {

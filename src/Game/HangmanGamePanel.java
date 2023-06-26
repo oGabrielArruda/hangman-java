@@ -14,7 +14,7 @@ import GameMode.*;
 import manager.QuestRandomizer;
 import model.Quest;
 
-public class HangmanGamePanel extends JPanel {
+public class HangmanGamePanel extends GamePanel {
     private WordPanel pnlWord;
     private HangmanState hangmanState;
     private HangmanGameFrame gameFrame;
@@ -104,7 +104,7 @@ public class HangmanGamePanel extends JPanel {
     }
 
     // método de verificação de derrota por erros de letras
-    private boolean hasLost() {
+    public boolean hasLost() {
         return hangmanState == HangmanState.HANGED;
     }
 
@@ -114,7 +114,7 @@ public class HangmanGamePanel extends JPanel {
     }
 
     // método de verificação de vitória
-    private boolean hasWon() {
+    public boolean hasWon() {
         return pnlWord.hasGuessedAllLetters() && hangmanState != HangmanState.HANGED && currentTime >= 0;
     }
 
@@ -159,7 +159,7 @@ public class HangmanGamePanel extends JPanel {
         g.drawImage(image, Constants.MID_SCREEN_X-2, Constants.MID_SCREEN_Y-117, null);
     }
 
-    private void checkIfFinished() {
+    public void checkIfFinished() {
         int option = 3;
         if (hasWon()) {
             timer.stop();
@@ -182,7 +182,7 @@ public class HangmanGamePanel extends JPanel {
         restart(option);
     }
 
-    private void restart(int option) {
+    public void restart(int option) {
         if (option == 3) return;
         if (option == 0) {
             new HangmanGameFrame(DIFFICULTY);
