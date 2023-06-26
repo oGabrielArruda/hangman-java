@@ -7,7 +7,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import Constants.Constants;
 import Game.IOFiles_Interface;
@@ -18,7 +17,15 @@ public class QuestManager implements IOFiles_Interface <Quest> {
     public boolean WriteFile (Quest q){
         try{
             File file = new File(Constants.QUESTS_PATH);
-            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+
+            if(q == null){
+                BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
+                writer.write("");
+                writer.close();
+                return true;
+            }
+
+            BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
             String s = q.toString();
             writer.write(s);
             writer.close();
@@ -46,9 +53,10 @@ public class QuestManager implements IOFiles_Interface <Quest> {
             }
         } catch (IOException e) {
             System.out.println("An error occurred while reading the quests file: " + e.getMessage());
+            return null;
         }
-
         return questItems;
+
     }
 
     //add a quest to quests.txt
@@ -70,7 +78,7 @@ public class QuestManager implements IOFiles_Interface <Quest> {
             else if(hint.equals("")){
                 new PopupFrame("Error", "Write a hint.");
             }
-            else if(findString(word) != -1){
+            else if(findLine(this.ReadFile(), word) != -1){
                 new PopupFrame("Error", "Word already added.");
             }
 
@@ -88,17 +96,17 @@ public class QuestManager implements IOFiles_Interface <Quest> {
     }
 
     //remove a quest from quests.txt
-    public static void removeWord(String word){
+    public void removeWord(String word){
         try{
-            File file = new File(Constants.QUESTS_PATH);
-            
+            ArrayList<Quest> quests = this.ReadFile();
+
             //remove invalid characters
             word = word.replaceAll("[^A-Za-z\\s]", "");
             word = word.trim();
             word = word.replaceAll("\\s+", " ");
             
             //find the word
-            int line = findString(word);
+            int line = findLine(quests, word);
             
             //catch errors
             if(word.equals("")){
@@ -108,25 +116,12 @@ public class QuestManager implements IOFiles_Interface <Quest> {
                 new PopupFrame("Error", "Word not found.");
             }
 
+            this.WriteFile(null);
             //remove the quest
-            else{
-                Scanner scan = new Scanner(file);
-                String s = "";
-                
-                for(int i = 0; i < line; i ++){
-                    s += scan.nextLine() + "\n";
+            for(Quest q : quests){
+                if(!q.getWord().equals(word)){
+                    this.WriteFile(q);
                 }
-                scan.nextLine();
-                while(scan.hasNextLine()){
-                    s += scan.nextLine() + "\n";
-                }
-
-                BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-                writer.write(s);
-                writer.close();
-
-                new PopupFrame("", "Quest has been removed.");
-                scan.close();
             }
         }
 
@@ -137,38 +132,22 @@ public class QuestManager implements IOFiles_Interface <Quest> {
     }
 
     //find the line with a given word in quests.txt
-    public static int findString(String s){
-        try{
-            File file = new File(Constants.QUESTS_PATH);   
-            int linha = -1;
-            boolean ok = false;
-            Scanner scan = new Scanner(file);
-            
-            //find the word
-            while(scan.hasNextLine()){
-                String txt = scan.nextLine(); linha ++;
-                int i = 0;
-                String w = "";
-                while(txt.charAt(i) != ';'){
-                    w += txt.charAt(i);
-                    i++;
-                }
-                if(w.equals(s)){
-                    ok = true;
-                    break;
-                }
+    public static int findLine(ArrayList<Quest> quests, String word){
+        int linha = -1;
+        boolean ok = false;
+        
+        //find the word
+        for(Quest q : quests){
+            String w = q.getWord(); linha ++;
+
+            if(word.equals(w)){
+                ok = true;
+                break;
             }
-            scan.close();
-
-            //test if found
-            if (ok) return linha;
-            else return -1;
         }
 
-        //error message
-        catch (IOException e){
-            new PopupFrame("", "Some unexpected error occurred in Reading File:\n" + e.getMessage());
-            return -1;
-        }
+        //test if found
+        if (ok) return linha;
+        else return -1;
     }
 }

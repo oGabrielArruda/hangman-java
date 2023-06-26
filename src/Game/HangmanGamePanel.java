@@ -21,7 +21,7 @@ public class HangmanGamePanel extends GamePanel <HangmanGameFrame>{
     private int currentTime;
     private final HangmanGameMode DIFFICULTY;
     private Set<Image> drawnBodyParts;
-    private QuestRandomizer questRandomizer;
+    private QuestRandomizer questRandomizer = new QuestRandomizer();
 
     public HangmanGamePanel(HangmanGameMode difficulty, HangmanGameFrame gameFrame) {
         super(gameFrame);

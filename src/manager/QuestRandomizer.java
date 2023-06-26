@@ -7,10 +7,11 @@ import Popup.PopupFrame;
 import model.Quest;
 
 public class QuestRandomizer {
-    public QuestManager manager ;
+    public QuestManager manager = new QuestManager();
 
     public Quest selectRandomQuest() {
         ArrayList<Quest> questItems = manager.ReadFile();
+
         if (questItems.isEmpty()) {
             new PopupFrame("Error", "No quests found!");
             return null;
