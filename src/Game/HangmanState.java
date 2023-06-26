@@ -11,6 +11,7 @@ public enum HangmanState {
 
     HangmanState() {}
 
+    // método utilizado para passarmos para a próxima parte do corpo
     public static HangmanState nextBodyPart(HangmanState state) {
         return HangmanState.values()[state.ordinal()+1];
     }

@@ -27,8 +27,4 @@ public enum GameMode {
     public int getTime() {
         return time;
     }
-
-    public int getDifficulty() {
-        return difficulty;
-    }
 }

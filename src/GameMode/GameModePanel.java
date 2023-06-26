@@ -26,6 +26,7 @@ public class GameModePanel extends JPanel {
         JButton btnHard = new JButton("Hard");
         JButton btnBackToMenu = new JButton("Back to Menu");
 
+        // posicionamos todos os componentes da forma correta
         lblSelectGameMode.setBounds(Constants.MID_SCREEN_X - 450, 60, Constants.SCREEN_X, Constants.HEIGHT_BUTTONS * 2);
 
         btnEasy.setBounds(Constants.MID_SCREEN_X - WIDTH_BUTTONS/2, Constants.MID_SCREEN_Y - HEIGHT_BUTTONS/2 - 130, WIDTH_BUTTONS, HEIGHT_BUTTONS);
@@ -44,6 +45,7 @@ public class GameModePanel extends JPanel {
         btnBackToMenu.setBackground(new Color(193, 236, 228));
         btnBackToMenu.setFont(Constants.FONT(30));
 
+        // para cada botão, redirecionamos o jogador para a tela do jogo com a dificuldade desejada
         btnEasy.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 new GameFrame(GameMode.EASY);

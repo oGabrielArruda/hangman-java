@@ -7,6 +7,7 @@ import Constants.Constants;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 
 import GameMode.*;
 import manager.QuestRandomizer;
@@ -30,12 +31,14 @@ public class GamePanel extends JPanel {
 
         Quest quest = QuestRandomizer.selectRandomQuest();
 
+        // instanciamos o panel que contem a palavra
         pnlWord = new WordPanel(quest.getWord());
+
+        JLabel lblTimer = new JLabel();
         JLabel lblUsedLetters = new JLabel("Used letters: ");
         JLabel lblHintContent = new JLabel(quest.getHint().toUpperCase());
+
         JButton btnBackToGameMode = new JButton("Back to Game Mode Selection");
-        
-        JLabel lblTimer = new JLabel();
 
         currentTime = difficulty.getTime();
         this.timer = new Timer(1000, new ActionListener(){
@@ -47,6 +50,7 @@ public class GamePanel extends JPanel {
         });
         timer.start();
 
+        // posicionamos todos os componentes de forma devida
         lblHintContent.setBounds(0, 30, 900, 50);
         lblHintContent.setHorizontalAlignment(SwingConstants.CENTER);
         lblHintContent.setFont(Constants.FONT(40));
@@ -83,20 +87,20 @@ public class GamePanel extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        ImageIcon imageIcon = new ImageIcon("utils/assets/images/Enforcado_resized.gif");
-        Image image = imageIcon.getImage();
-        g.drawImage(image, Constants.MID_SCREEN_X, Constants.MID_SCREEN_Y, null);
         drawHangman(g);
     }
 
+    // método de verificação de derrota por erros de letras
     private boolean hasLost() {
         return hangmanState == HangmanState.HANGED;
     }
 
+    // método de verificação de derrota por tempo
     private boolean hasLostTime() {
         return currentTime == -1;
     }
 
+    // método de verificação de vitória
     private boolean hasWon() {
         return pnlWord.hasGuessedAllLetters() && hangmanState != HangmanState.HANGED && currentTime >= 0;
     }
@@ -112,6 +116,10 @@ public class GamePanel extends JPanel {
         imageIcon = new ImageIcon("utils/assets/images/forca_comeco.gif");
         image = imageIcon.getImage();
         g.drawImage(image, Constants.MID_SCREEN_X-50, Constants.MID_SCREEN_Y - 100, null);
+
+        imageIcon = new ImageIcon("utils/assets/images/forca_comeco.gif");
+        image = imageIcon.getImage();
+        g.drawImage(image, Constants.MID_SCREEN_X-50, Constants.MID_SCREEN_Y - 60, null);
 
         imageIcon = new ImageIcon("utils/assets/images/forca_fim.gif");
         image = imageIcon.getImage();
@@ -139,35 +147,35 @@ public class GamePanel extends JPanel {
 
         imageIcon = new ImageIcon("utils/assets/images/cabeca.gif");
         image = imageIcon.getImage();
-        g.drawImage(image, Constants.MID_SCREEN_X-4, Constants.MID_SCREEN_Y-135, null);
+        g.drawImage(image, Constants.MID_SCREEN_X-4, Constants.MID_SCREEN_Y-150, null);
 
         imageIcon = new ImageIcon("utils/assets/images/queixo.gif");
         image = imageIcon.getImage();
-        g.drawImage(image, Constants.MID_SCREEN_X, Constants.MID_SCREEN_Y, null);
+        g.drawImage(image, Constants.MID_SCREEN_X, Constants.MID_SCREEN_Y-110, null);
 
         imageIcon = new ImageIcon("utils/assets/images/tronco.gif");
         image = imageIcon.getImage();
-        g.drawImage(image, Constants.MID_SCREEN_X, Constants.MID_SCREEN_Y, null);
+        g.drawImage(image, Constants.MID_SCREEN_X, Constants.MID_SCREEN_Y-102, null);
 
         imageIcon = new ImageIcon("utils/assets/images/cintura.gif");
         image = imageIcon.getImage();
-        g.drawImage(image, Constants.MID_SCREEN_X, Constants.MID_SCREEN_Y, null);
+        g.drawImage(image, Constants.MID_SCREEN_X, Constants.MID_SCREEN_Y-61, null);
 
         imageIcon = new ImageIcon("utils/assets/images/mao_direita.gif");
         image = imageIcon.getImage();
-        g.drawImage(image, Constants.MID_SCREEN_X, Constants.MID_SCREEN_Y, null);
+        g.drawImage(image, Constants.MID_SCREEN_X + 32, Constants.MID_SCREEN_Y - 102, null);
 
         imageIcon = new ImageIcon("utils/assets/images/mao_esquerda.gif");
         image = imageIcon.getImage();
-        g.drawImage(image, Constants.MID_SCREEN_X, Constants.MID_SCREEN_Y, null);
+        g.drawImage(image, Constants.MID_SCREEN_X - 29, Constants.MID_SCREEN_Y - 110, null);
 
         imageIcon = new ImageIcon("utils/assets/images/pe_direito.gif");
         image = imageIcon.getImage();
-        g.drawImage(image, Constants.MID_SCREEN_X, Constants.MID_SCREEN_Y, null);
+        g.drawImage(image, Constants.MID_SCREEN_X+18, Constants.MID_SCREEN_Y-36, null);
 
         imageIcon = new ImageIcon("utils/assets/images/pe_esquerdo.gif");
         image = imageIcon.getImage();
-        g.drawImage(image, Constants.MID_SCREEN_X, Constants.MID_SCREEN_Y, null);
+        g.drawImage(image, Constants.MID_SCREEN_X-18, Constants.MID_SCREEN_Y-36, null);
     }
 
     private void checkIfFinished() {
@@ -203,15 +211,20 @@ public class GamePanel extends JPanel {
         this.gameFrame.dispose();
     }
 
+    // método de geração de cada botão de letra
     private void loadLetterButtons(JLabel lblUsedLetters, WordPanel pnlWord) {
-        String[] letters = new String[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
-                "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
+        String[] letters = new String[] {
+                "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
+                "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
+        };
 
         int line = 0;
         int i = 0;
+        // aqui, criamos um botão por vez, colocando-os em linhas
         for (String letter : letters) {
             JButton newLetterButton = new JButton(letter);
 
+            // verificação para sabermos quando quebrar a linha
             if (i % 10 == 0) {
                 line++;
                 i = 0;
@@ -225,9 +238,10 @@ public class GamePanel extends JPanel {
                     String letter = newLetterButton.getText();
                     boolean matches = pnlWord.matchLetter(letter);
 
+                    // caso o usuário erre a letra
                     if (!matches) {
-                        hangmanState = HangmanState.nextBodyPart(hangmanState);
                         lblUsedLetters.setText(lblUsedLetters.getText() + " " + letter);
+                        hangmanState = HangmanState.nextBodyPart(hangmanState);
                     }
 
                     checkIfFinished();
