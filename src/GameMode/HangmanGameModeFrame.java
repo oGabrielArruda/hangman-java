@@ -3,6 +3,10 @@ package GameMode;
 import Constants.Constants;
 import javax.swing.*;
 
+/*
+ * Classe do Frame da Escolha do Modo da Forca
+ */
+
 public class HangmanGameModeFrame extends JFrame {
     public HangmanGameModeFrame() {
         this.add(new HangmanGameModePanel(this));

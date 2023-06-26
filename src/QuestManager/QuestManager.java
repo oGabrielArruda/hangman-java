@@ -15,6 +15,7 @@ import model.Quest;
 
 /*
  * Classe do Gerenciador de Perguntas
+ * Implementa a Interface In/Out
  */
 
 public class QuestManager implements IOFiles_Interface <Quest> {

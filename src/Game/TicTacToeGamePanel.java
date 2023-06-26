@@ -11,11 +11,16 @@ import java.util.Random;
 
 import Menu.MenuFrame;
 
+/*
+ * Classe do Jogo da Velha
+ */
+
 public class TicTacToeGamePanel extends GamePanel <TicTacToeGameFrame>{
     private boolean turn; // true: X, false: O
     private ArrayList<JButton> squares;
     private TicTacToeManager manager;
 
+    // Constructor
     public TicTacToeGamePanel(TicTacToeGameFrame gameFrame) {
         super(gameFrame);
         this.setLayout(null);
@@ -64,7 +69,7 @@ public class TicTacToeGamePanel extends GamePanel <TicTacToeGameFrame>{
 
             squares.add(newBtn);
             this.add(newBtn);
-        }    
+        }
 
         // Reset button
         JButton btnReset = new JButton("Reset History");
@@ -80,7 +85,7 @@ public class TicTacToeGamePanel extends GamePanel <TicTacToeGameFrame>{
             }
         });
 
-        // Back to Menu
+        // Back to Menu button
         JButton btnBackToMenu = new JButton("Back to Menu");
         
         btnBackToMenu.setBounds(Constants.MID_SCREEN_X - Constants.WIDTH_BUTTONS/2 - Constants.WIDTH_BUTTONS, Constants.MID_SCREEN_Y + 225, Constants.WIDTH_BUTTONS, Constants.HEIGHT_BUTTONS);
@@ -99,6 +104,7 @@ public class TicTacToeGamePanel extends GamePanel <TicTacToeGameFrame>{
         this.add(lblTurn);
     }
 
+    // Checa se o jogo acabou
     public void checkIfFinished() {
         int option = 3;
 
@@ -185,10 +191,8 @@ public class TicTacToeGamePanel extends GamePanel <TicTacToeGameFrame>{
         restart(option);
     }
 
+    // Reinicia o jogo
     public void restart(int option) {
-        /*
-         * Reinicia o jogo
-         */
         if (option == 3) return;
         if (option == 0)
             new TicTacToeGameFrame();
@@ -197,6 +201,7 @@ public class TicTacToeGamePanel extends GamePanel <TicTacToeGameFrame>{
         this.gameFrame.dispose();
     }
 
+    // Troca o turno dos jogadores
     public void changeTurn(JLabel lblTurn, JButton newBtn, boolean turn){
         if(turn){
             newBtn.setText("X");

@@ -3,6 +3,10 @@ package Popup;
 import Constants.Constants;
 import javax.swing.*;
 
+/*
+ * Classe de Popups
+ */
+
 public class PopupPanel extends JPanel {
     public PopupPanel(PopupFrame popupFrame, String title, String content) {
         this.setLayout(null);

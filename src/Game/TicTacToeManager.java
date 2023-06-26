@@ -11,8 +11,14 @@ import model.History;
 import Constants.Constants;
 import Popup.PopupFrame;
 
+/*
+ * Classe do Gerenciador de Arquivos o Jogo da Velha
+ * Implementa a Interface In/Out
+ */
+
 public class TicTacToeManager implements IOFiles_Interface <History> {
 
+    // Substitui o histórico atual do arquivo para o histórico h
     public boolean WriteFile (History h){
         try{
             File file = new File(Constants.TICTAC_PATH);
@@ -22,12 +28,14 @@ public class TicTacToeManager implements IOFiles_Interface <History> {
             writer.close();
             return true;
         }
+        // Se deu algum erro
         catch(IOException e) {
-            new PopupFrame("Error", "Some unexpected error occurred in TicTacToe WriteFile:\n" + e.getMessage());
+            new PopupFrame("Error", "Some unexpected error occurred while writing the history of TicTacToe:\n" + e.getMessage());
             return false;
         }
     }
 
+    // Lê o histórico escrito no arquivo
     public ArrayList<History> ReadFile(){
         try{
             File file = new File(Constants.TICTAC_PATH);
@@ -46,19 +54,21 @@ public class TicTacToeManager implements IOFiles_Interface <History> {
 
             return array;
         }
+        // Se deu algum erro
         catch(IOException e) {
-            new PopupFrame("Error", "Some unexpected error occurred in TicTacToe WriteFile:\n" + e.getMessage());
+            new PopupFrame("Error", "Some unexpected error occurred while reading the history of TicTacToe:\n" + e.getMessage());
             return null;
         }
     }
 
+    // retorna o histórico do Jogo
     public String getHistory(){
         ArrayList<History> array = ReadFile();
         History h = array.get(0);
         return h.toString();
     }
 
-    //add a quest to quests.txt
+    // muda o histórico do Jogo
     public void changeHistory(char c){
         try{
             File file = new File(Constants.TICTAC_PATH);

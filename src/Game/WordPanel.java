@@ -6,11 +6,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class WordPanel extends JPanel {
+/*
+ * Classe para posicionamento correto das letras da forca
+ */
 
+public class WordPanel extends JPanel {
     private final String WORD;
     private ArrayList<JLabel> labels;
 
+    // Constructor
     public WordPanel(String word) {
         this.WORD = word;
         labels = new ArrayList<JLabel>();

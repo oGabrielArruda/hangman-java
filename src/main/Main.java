@@ -16,7 +16,10 @@ import Constants.Constants;
 
 public class Main {
     public static void main(String[] args) {
+        // open the menu
         new MenuFrame();
+
+        // plays the background music
         playBackgroundSong(Constants.SONG_PATH);
     }
 

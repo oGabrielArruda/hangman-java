@@ -9,18 +9,25 @@ import java.awt.event.ActionListener;
 import Game.HangmanGameFrame;
 import Menu.HangmanMenuFrame;
 
+/*
+ * Classe da Escolha do Modo da Forca
+ */
+
 public class HangmanGameModePanel extends JPanel {
     private static final int WIDTH_BUTTONS = Constants.WIDTH_BUTTONS * 3/2;
     private static final int HEIGHT_BUTTONS = Constants.HEIGHT_BUTTONS * 3/2;
     private static final int VERTICAL_GAP_BUTTONS = Constants.VERTICAL_GAP_BUTTONS * 3/2;
 
     public HangmanGameModePanel(HangmanGameModeFrame gameModeFrame) {
+        // VISUAL
         this.setLayout(null);
         this.setBackground(Constants.COLOR_BACKGROUND);
 
+        // Select mode label
         JLabel lblSelectGameMode = new JLabel("Select your game mode:", SwingConstants.CENTER);
         lblSelectGameMode.setFont(Constants.FONT(40));
 
+        // Buttons
         JButton btnEasy = new JButton("Easy");
         JButton btnMedium = new JButton("Medium");
         JButton btnHard = new JButton("Hard");
@@ -74,8 +81,10 @@ public class HangmanGameModePanel extends JPanel {
             }
         });
 
+        //Add labels
         this.add(lblSelectGameMode);
 
+        //Add buttons
         this.add(btnEasy);
         this.add(btnMedium);
         this.add(btnHard);

@@ -3,6 +3,10 @@ package Popup;
 import Constants.Constants;
 import javax.swing.*;
 
+/*
+ * Classe do frame dos Popups
+ */
+
 public class PopupFrame extends JFrame {
     public PopupFrame(String title, String content) {
         this.add(new PopupPanel(this, title, content));
