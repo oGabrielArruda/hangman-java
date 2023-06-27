@@ -4,8 +4,8 @@ torta;sobremesa doce
 abacate;fruta
 ronaldo;fenomeno
 estrelicia;flor
-tornado;fenomeno
 yvens;bonito
 sergio;nome de uma pessoa
-pontepreta;maior time do interior
+ponte preta;maior time do interior
 carlinhos;brown
+tornado;fenomeno

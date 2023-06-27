@@ -24,7 +24,13 @@ public class WordPanel extends JPanel {
 
         // criamos os espaços para as letras da palavra
         for(int i = 0; i < this.WORD.length(); i++) {
-            JLabel lblLetter = new JLabel("_", SwingConstants.CENTER);
+            JLabel lblLetter;
+            if(this.WORD.charAt(i) == ' '){
+                lblLetter = new JLabel(" ", SwingConstants.CENTER);
+            }
+            else{
+                lblLetter = new JLabel("_", SwingConstants.CENTER);
+            }
             lblLetter.setFont(Constants.FONT(30));
 
             labels.add(lblLetter);
