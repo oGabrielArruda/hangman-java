@@ -6,11 +6,29 @@
   <component name="ChangeListManager">
     <list default="true" id="218e92fd-902e-4ad5-94bc-a90b851ddb38" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/HangmanState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/HangmanState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/WordPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/WordPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameMode/GameMode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameMode/GameMode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameMode/GameModePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameMode/GameModePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hangman-java/Game/GameFrame.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hangman-java/Game/GamePanel$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hangman-java/Game/GamePanel$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hangman-java/Game/GamePanel$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hangman-java/Game/GamePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/hangman-java/Game/GamePanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hangman-java/Game/HangmanState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/hangman-java/Game/HangmanState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hangman-java/GameMode/GameMode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hangman-java/GameMode/GameModeFrame.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hangman-java/GameMode/GameModePanel$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hangman-java/GameMode/GameModePanel$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hangman-java/GameMode/GameModePanel$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hangman-java/GameMode/GameModePanel$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hangman-java/GameMode/GameModePanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hangman-java/Menu/MenuFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/hangman-java/Menu/MenuFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hangman-java/Menu/MenuPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/hangman-java/Menu/MenuPanel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hangman-java/Menu/MenuPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/hangman-java/Menu/MenuPanel$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hangman-java/Menu/MenuPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/hangman-java/Menu/MenuPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hangman-java/QuestManager/QuestManagerPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/hangman-java/QuestManager/QuestManagerPanel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hangman-java/QuestManager/QuestManagerPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/hangman-java/QuestManager/QuestManagerPanel$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hangman-java/QuestManager/QuestManagerPanel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/hangman-java/QuestManager/QuestManagerPanel$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hangman-java/QuestManager/QuestManagerPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/hangman-java/QuestManager/QuestManagerPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hangman-java/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/hangman-java/main/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/hangman-java/manager/QuestRandomizer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/hangman-java/manager/QuestRandomizer.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +125,8 @@
       <workItem from="1687445863635" duration="3992000" />
       <workItem from="1687544961050" duration="2041000" />
       <workItem from="1687668188482" duration="2003000" />
-      <workItem from="1687739502245" duration="5200000" />
+      <workItem from="1687739502245" duration="5316000" />
+      <workItem from="1687802796279" duration="4892000" />
     </task>
     <servers />
   </component>
