@@ -1,8 +1,9 @@
-package Game;
+package Game.TicTacToeGame;
 
 import javax.swing.*;
 
 import Constants.Constants;
+import Game.GamePanel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

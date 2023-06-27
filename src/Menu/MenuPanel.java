@@ -1,7 +1,7 @@
 package Menu;
 
 import Constants.Constants;
-import Game.TicTacToeGameFrame;
+import Game.TicTacToeGame.TicTacToeGameFrame;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

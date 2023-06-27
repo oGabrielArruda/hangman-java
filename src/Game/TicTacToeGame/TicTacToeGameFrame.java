@@ -1,4 +1,6 @@
-package Game;
+package Game.TicTacToeGame;
+
+import Game.GameFrame;
 
 /*
  * Classe do Frame do Jogo da Velha

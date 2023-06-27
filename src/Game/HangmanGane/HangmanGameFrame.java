@@ -1,5 +1,6 @@
-package Game;
+package Game.HangmanGane;
 
+import Game.GameFrame;
 import GameMode.HangmanGameMode;
 
 /*
