@@ -1,4 +1,4 @@
-package Game;
+package Game.HangmanGane;
 
 import Constants.Constants;
 

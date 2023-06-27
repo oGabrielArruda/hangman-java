@@ -3,8 +3,6 @@ package Game.HangmanGane;
 import java.util.HashSet;
 import java.util.Set;
 
-import Game.Image;
-
 /*
  * Enum para controlar o estado da forca
  * Cada estado tem imagens correspondentes

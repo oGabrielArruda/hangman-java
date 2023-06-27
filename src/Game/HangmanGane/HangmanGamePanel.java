@@ -4,8 +4,6 @@ import javax.swing.*;
 
 import Constants.Constants;
 import Game.GamePanel;
-import Game.Image;
-import Game.WordPanel;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
