@@ -26,6 +26,7 @@ public class HangmanGamePanel extends GamePanel <HangmanGameFrame>{
     private final HangmanGameMode DIFFICULTY;
     private Set<Image> drawnBodyParts;
     private QuestRandomizer questRandomizer = new QuestRandomizer();
+    private String word;
 
     // Constructor
     public HangmanGamePanel(HangmanGameMode difficulty, HangmanGameFrame gameFrame) {
@@ -41,7 +42,8 @@ public class HangmanGamePanel extends GamePanel <HangmanGameFrame>{
         Quest quest = questRandomizer.selectRandomQuest();
 
         // instanciamos o panel que contem a palavra
-        pnlWord = new WordPanel(quest.getWord());
+        word = quest.getWord();
+        pnlWord = new WordPanel(word);
 
         // adiciona visuais
         JLabel lblTimer = new JLabel();
@@ -177,7 +179,7 @@ public class HangmanGamePanel extends GamePanel <HangmanGameFrame>{
             option = JOptionPane.showConfirmDialog(null, "Congrats! You have won! Would you like to play again?", "Nice!", JOptionPane.YES_NO_OPTION);
         }else if (hasLost()) {
             timer.stop();
-            option = JOptionPane.showConfirmDialog(null, "Looks like you have lost! Would you like to play again?", "Too bad :/", JOptionPane.YES_NO_OPTION);
+            option = JOptionPane.showConfirmDialog(null, "Looks like you have lost! The word was " + this.word + ". Would you like to play again?", "Too bad :/", JOptionPane.YES_NO_OPTION);
         }
         restart(option);
     }
@@ -191,7 +193,7 @@ public class HangmanGamePanel extends GamePanel <HangmanGameFrame>{
             timer.stop();
         }
         else if (hasLostTime()) {
-            option = JOptionPane.showConfirmDialog(null, "Looks like your time is up! Would you like to play again?", "Too bad :/", JOptionPane.YES_NO_OPTION);
+            option = JOptionPane.showConfirmDialog(null, "Looks like your time is up! The word was " + this.word + ". Would you like to play again?", "Too bad :/", JOptionPane.YES_NO_OPTION);
         }
         restart(option);
     }
